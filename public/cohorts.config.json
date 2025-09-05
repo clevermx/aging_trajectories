@@ -1,0 +1,164 @@
+{
+    "cohorts": {
+        "soundLife": {
+            "title": "Sound Life",
+            "eth": [
+                "African American",
+                "Asian",
+                "Caucasian",
+                "Hispanic or Latin American"
+            ],
+            "donors": 3,
+            "position": [
+                132,
+                100
+            ],
+            "color": "#C4B454",
+            "line_to": "",
+            "links": {
+                "download": [
+                    {
+                        "type": "scn",
+                        "link": "empty_link_for_now"
+                    },
+                    {
+                        "type": "synapse",
+                        "link": "empty_link_for_now"
+                    }
+                ],
+                "view": {
+                        "type": "scn",
+                        "link": "empty_link_for_now"
+                    }
+            }
+        },
+        "ucsf": {
+            "title": "UCSF, ImmVar",
+            "eth": [
+                "Asian",
+                "Caucasian",
+                "Hispanic or Latin American"
+            ],
+            "donors": 4,
+            "position": [
+                280,
+                110
+            ],
+            "color": "#C15B58",
+            "line_to": "",
+            "links": {
+                "download": [
+                    {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated"
+                    }
+                ],
+                "view": {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated"
+                    }
+            }
+        },
+        "abf300": {
+            "title": "ABF300",
+            "eth": [
+                "Caucasian"
+            ],
+            "donors": 10,
+            "position": [
+                251,
+                279
+            ],
+            "color": "#8FB98B",
+            "line_to": "",
+            "links": {
+                "download": [
+                    {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=ABF300_reannotated"
+                    }
+                ],
+                "view": {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=ABF300_reannotated"
+                    }
+            }
+        },
+        "spac": {
+            "title": "SPAC",
+            "eth": [
+                "Asian"
+            ],
+            "donors": 100,
+            "position": [
+                200,
+                700
+            ],
+            "color": "#A78CC1",
+            "line_to": "",
+            "links": {
+                "download": [
+                    {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SPAC_filtered_donors_reannotated"
+                    }
+                ],
+                "view": {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SPAC_filtered_donors_reannotated"
+                    }
+            }
+        },
+        "aida": {
+            "title": "AIDA",
+            "eth": [
+                "Asian",
+                "Caucasian"
+            ],
+            "donors": 200,
+            "position": [
+                250,
+                800
+            ],
+            "color": "#E69A45",
+            "line_to": "",
+            "links": {
+                "download": [
+                    {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated"
+                    }
+                ],
+                "view": {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated"
+                    }
+            }
+        },
+        "onek1k": {
+            "title": "OneK1K",
+            "eth": [
+                "Caucasian"
+            ],
+            "donors": 200,
+            "position": [
+                355,
+                830
+            ],
+            "color": "#6BA6A8",
+            "line_to": "",
+            "links": {
+                "download": [
+                    {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated"
+                    }
+                ],
+                "view": {
+                        "type": "scn",
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated"
+                    }
+            }
+        }
+    }
+}

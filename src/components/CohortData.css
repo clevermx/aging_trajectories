@@ -1,0 +1,32 @@
+.cohort-card {
+    background-color: hsl(var(--card));
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 300px;
+    text-align: center;
+}
+.cohort-title {
+    margin: 0 0 20px 0;
+    color: hsl(var(--card-foreground));
+}
+.button-row {
+    display: flex;
+    justify-content: space-between;
+}
+.cohort-button {
+    flex: 1;
+    padding: 8px 20px; /* Equivalent to py-2 and px-5 */
+    margin: 0 5px;
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Simulates bg-white/50 */
+    border-radius: var(--radius); /* Equivalent to rounded-lg */
+    background-color: rgba(255, 255, 255, 0.5); /* Equivalent to bg-white/50 */
+    color: hsl(var(--foreground)); /* Text color */
+    font-size: 0.875rem; /* Equivalent to text-sm */
+    font-weight: 500; /* Equivalent to font-medium */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+.cohort-button:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* Equivalent to hover:bg-white/40 */
+}
