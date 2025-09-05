@@ -7,6 +7,7 @@ import { CohortData } from "@/components/CohortData";
 import { DataSet } from "@/components/PopulationJson";
 import PopulationGrid from "@/components/PopulationsGrid";
 import { DownloadPage } from "./DownloadPage";
+import { assetUrl } from "@/utils/assets";
 
 export interface JSONData {
     datasets: DataSet[];
@@ -22,7 +23,8 @@ export const MainPage: React.FC = () => {
     useEffect(() => {
         const loadData = async () => {
             try {
-                const response = await fetch("/dataset.config.json");
+                const url = assetUrl("dataset.config.json");
+                const response = await fetch(url);
                 const config = await response.json();
 
                 const whole_dataset_data = new PopulationData({
@@ -85,7 +87,8 @@ export const MainPage: React.FC = () => {
 
     useEffect(() => {
         const fetchCohorts = async () => {
-            const response = await fetch("/cohorts.config.json");
+            const url = assetUrl("cohorts.config.json");
+            const response = await fetch(url);
             const data = await response.json();
 
             const parsed_cohorts: Record<string, CohortData> = {};
@@ -210,7 +213,7 @@ export const MainPage: React.FC = () => {
                         data={data.datasets[0]}
                         cohorts={cohort_data}
                         selectedPopulation={selectedPopulation}
-                        onSelectPopulation={()=> {}}
+                        onSelectPopulation={() => { }}
                         onDownload={() => {
                             document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                         }}

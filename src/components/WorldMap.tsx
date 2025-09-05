@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CohortData, CohortInfo } from '../components/CohortData';
+import { assetUrl } from '@/utils/assets';
 
 export interface RegionData {
   "title": string;
@@ -16,7 +17,8 @@ export const WorldMap: React.FC<WorldMapProps> = (input) => {
   const [region_data, setRegions] = useState<Record<string, RegionData>>({});
   const [selectedCohorts, setSelectedCohort] = useState<string[] | null>(null);
   useEffect(() => {
-    fetch('/regions.config.json')
+    const url = assetUrl("regions.config.json");
+    fetch(url)
       .then(response => response.json())
       .then(data => {
         const parsed_regions: Record<string, RegionData> = {};
@@ -47,7 +49,7 @@ export const WorldMap: React.FC<WorldMapProps> = (input) => {
         className="w-full h-full"
       >
         <image
-          href="/images/intro_page/empty_map.png"
+          href={assetUrl("images/intro_page/empty_map.png")}
           x="0"
           y="0"
           width={SVG_WIDTH}

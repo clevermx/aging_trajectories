@@ -13,10 +13,11 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {/* 👇 add basename so routes resolve under /human-immune-aging-trajectories/ in preview/build */}
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* keep custom routes above the catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

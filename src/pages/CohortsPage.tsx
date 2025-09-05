@@ -1,6 +1,7 @@
 import React from 'react';
 import { WorldMap } from '../components/WorldMap';
 import { CohortCard, CohortData } from '@/components/CohortData';
+import { assetUrl } from '@/utils/assets';
 
 interface CohortsPageProps {
   cohorts: Record<string, CohortData>;
@@ -30,7 +31,7 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
         <div className="basis-[30%] flex flex-col">
           <div className="flex-1">
             <img
-              src="/images/intro_page/design.png"
+              src={assetUrl("images/intro_page/design.png")}
               className="w-full h-full object-cover"
             />
           </div>
