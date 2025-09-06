@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { PopulationCard, PopulationData } from './PopulationData';
 import { FileTabData } from './FilesComponent';
-import {DataPoint, DataSet} from './PopulationJson';
+import { DataPoint, DataSet } from './PopulationJson';
 
+// NEW: helper to decide if a population has any links
+const hasLinks = (p?: PopulationData) =>
+  !!(p?.links?.sc_link || p?.links?.bulk_link || (p?.links?.download?.length ?? 0) > 0);
 
 
 
@@ -60,10 +63,10 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
   }, [data]);
   const handlePopulationClick = (population: string | null) => {
     if (!population) return;
-    const totalClusters = Object.keys(data.data.clusters).length;
+    const totalClusters = Object.keys(groupedPoints).length;
     const newTransforms: Record<string, string> = {};
     const newScales: Record<string, number> = {};
-    Object.keys(data.data.clusters).forEach((clusterKey, index) => {
+    Object.keys(groupedPoints).forEach((clusterKey, index) => {
       const clusterPoints = groupedPoints[clusterKey];
       const initialBounds = getClusterBounds(clusterPoints);
       const scalingFactor = TARGET_CLUSTER_WIDTH / (initialBounds.maxX - initialBounds.minX);
@@ -84,15 +87,20 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
     setPathScale({});
   };
   const groupedPoints: Record<string, Record<string, DataPoint[]>> = {};
-  if ( svgPositions && Object.keys(svgPositions).length > 0 ) {
+
+  if (svgPositions && Object.keys(svgPositions).length > 0) {
     data.plot_data.umap_clustering_borders.data.forEach(point => {
-      if (!groupedPoints[point.clustering]) {
-        groupedPoints[point.clustering] = {};
+      if (hasLinks(data.data.clusters[point.clustering])) {
+        if (!groupedPoints[point.clustering]) {
+          groupedPoints[point.clustering] = {};
+        }
+        if (!groupedPoints[point.clustering][point.group]) {
+          groupedPoints[point.clustering][point.group] = [];
+        }
+
+        groupedPoints[point.clustering][point.group].push(point);
       }
-      if (!groupedPoints[point.clustering][point.group]) {
-        groupedPoints[point.clustering][point.group] = [];
-      }
-      groupedPoints[point.clustering][point.group].push(point);
+
     });
     Object.keys(groupedPoints).forEach(clustering => {
       const centroid = svgPositions[clustering];
@@ -142,7 +150,7 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
             style={{ filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.3))' }}
           >
             {data && svgPositions && Object.keys(svgPositions).length > 0 &&
-              Object.keys(data.data.clusters).map(clusterKey => {
+              Object.keys(groupedPoints).map(clusterKey => {
                 const cluster = data.data.clusters[clusterKey];
                 const initialPosition = svgPositions[clusterKey];
                 const initialTransform = initialPosition
@@ -156,7 +164,7 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
                 return (
                   <g
                     key={clusterKey}
-                    className={`cluster ${cluster.description}`}
+                    className={`cluster ${cluster.name}`}
                     transform={`${popTransform[clusterKey] || initialTransform}`}
                     onClick={() => handlePopulationClick(clusterKey)}
                     style={{ transition: 'transform 0.5s' }}
@@ -227,7 +235,7 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
         >
           <PopulationCard
             population={data.data}
-            onClose={() => {}}
+            onClose={() => { }}
             style_extra={{ position: 'static' }}
             layout="inline"
             onDownload={onDownload}

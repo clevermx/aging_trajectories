@@ -1,72 +1,100 @@
-import React from 'react';
-import { WorldMap } from '../components/WorldMap';
-import { CohortCard, CohortData } from '@/components/CohortData';
-import { DataSet } from '@/components/PopulationJson';
-import { FilesComponent } from '@/components/FilesComponent';
+import React, { useMemo } from 'react';
 import { FilesViewer } from '@/components/FilesViewer';
 import { FilesList } from '@/components/FilesList';
+import { DataSet } from '@/components/PopulationJson';
+import { CohortData } from '@/components/CohortData';
+import { FileTabData } from '@/components/FilesComponent';
 
 export interface DatasetDownloadPageProps {
-    data: DataSet;
-    cohorts: Record<string, CohortData>;
-    selectedPopulation: string | null;
-    onSelectPopulation: (population: string | null) => void;
-    onDownload: () => void;
-    listDownloads: boolean
+  data: DataSet;
+  cohorts: Record<string, CohortData>;
+  selectedPopulation: string | null;
+  onSelectPopulation: (population: string | null) => void; // if your FilesViewer expects onSelectTab, you can pass this through
+  onDownload: () => void;
+  listDownloads: boolean;
 }
 
-
-
-
 export const DownloadPage: React.FC<DatasetDownloadPageProps> = ({
-    data,
-    cohorts,
-    selectedPopulation,
-    onSelectPopulation,
-    onDownload,
-    listDownloads
+  data,
+  cohorts,
+  selectedPopulation,
+  onSelectPopulation,
+  onDownload,
+  listDownloads,
 }) => {
+  // Build tabs safely & memoized
+  const tabs: Record<string, FileTabData> = useMemo(() => {
+    const out: Record<string, FileTabData> = {};
 
-    const filesData = {}
-    filesData[data.data.name] = data.data.files
-    Object.values(data.data.clusters).forEach(subset => {
-        if (subset.files.files.length > 0) {
-            filesData[subset.display_name] = subset.files
-        }
-    });
-    const mergedCohortFiles = Object.values(cohorts)
-        .flatMap((cohort) => cohort.files?.files ?? []);
-    const cohorts_files = {}
-    if (mergedCohortFiles.length > 0) {
-        filesData["all_cohorts"] = {
-            name: "all_cohorts",
-            display_name: "Reannotated datasets",
-            files: mergedCohortFiles,
-            color: "#add8e6"
-
-        };
+    // Root dataset files (if present)
+    const rootFiles = data?.data?.files?.files ?? [];
+    if (rootFiles.length > 0 && data?.data?.files) {
+      out[data.data.name] = {
+        ...data.data.files,
+        name: data.data.name,
+        display_name: data.data.display_name ?? data.data.name,
+        color: data.data.color,
+        files: rootFiles,
+      };
     }
-    return (
-        <div className="w-full lg:w-[90%] min-h-screen p-4 sm:p-8 mx-auto flex flex-col">
 
+    // Subset/cluster files
+    const clusters = data?.data?.clusters ?? {};
+    Object.values(clusters).forEach((subset) => {
+      const subsetFiles = subset?.files?.files ?? [];
+      if (subsetFiles.length > 0 && subset.files) {
+        const key = subset.name; // key should be unique (use .name)
+        out[key] = {
+          ...subset.files,
+          name: subset.name,
+          display_name: subset.display_name ?? subset.name,
+          color: subset.color,
+          files: subsetFiles,
+        };
+      }
+    });
 
-
-                {/* Header */}
-                <h2 className="text-4xl font-bold mb-4">Downloads</h2>
-                {!listDownloads && <FilesViewer
-                    tabs={filesData}
-                    dataset_name={data.data.name}
-                    selectedTab={selectedPopulation}
-                    onSelectTab={onSelectPopulation}
-                />}
-                {listDownloads && <FilesList
-                    tabs={filesData}
-                    dataset_name={data.data.name}
-                />}
-
-
-
-        </div>
-
+    // Merge cohorts’ files into a single tab
+    const mergedCohortFiles = Object.values(cohorts).flatMap(
+      (c) => c?.files?.files ?? []
     );
+    if (mergedCohortFiles.length > 0) {
+      out['all_cohorts'] = {
+        name: 'all_cohorts',
+        display_name: 'Reannotated datasets',
+        color: '#add8e6',
+        files: mergedCohortFiles,
+      };
+    }
+
+    return out;
+  }, [data, cohorts]);
+
+  const hasTabs = Object.keys(tabs).length > 0;
+
+  return (
+    <div className="w-full lg:w-[90%] min-h-screen p-4 sm:p-8 mx-auto flex flex-col">
+      <h2 className="text-4xl font-bold mb-4">Downloads</h2>
+
+      {!hasTabs && (
+        <p className="text-muted-foreground">
+          No downloads are available yet.
+        </p>
+      )}
+
+      {hasTabs &&
+        (!listDownloads ? (
+          <FilesViewer
+            tabs={tabs}
+            dataset_name={data.data.name}
+            selectedTab={selectedPopulation}
+            // If FilesViewer expects `onSelectTab`, pass the same function:
+            onSelectTab={onSelectPopulation as any}
+            // OR change FilesViewer to take `onSelectPopulation` and keep types aligned.
+          />
+        ) : (
+          <FilesList tabs={tabs} dataset_name={data.data.name} />
+        ))}
+    </div>
+  );
 };
