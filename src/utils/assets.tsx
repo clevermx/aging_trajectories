@@ -3,3 +3,4 @@ export const assetUrl = (rel: string) => {
   const path = rel.replace(/^\/+/, "");                               // trim leading /
   return `${base}/${path}`;
 }
+    

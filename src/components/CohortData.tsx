@@ -146,11 +146,11 @@ export const CohortInfo: React.FC<CohortInfoProps> = ({ cohort, onClose, style }
                     <span className="font-semibold">Participants:</span>
                     <span className="ml-2 text-gray-700">{cohort.donors}</span>
                 </div>
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                     <Calendar className="text-purple-600 w-5 h-5 mr-3" />
                     <span className="font-semibold">Study Period:</span>
                     <span className="ml-2 text-gray-700">2021 – 2024</span>
-                </div>
+                </div> */}
                 <div> {/* This div now wraps the ethnicity list */}
                     {cohort.eth.map((ethnicity, index) => (
                         <p key={index} className="text-gray-700 leading-tight">
