@@ -87,6 +87,27 @@ export const getLuminance = (hex: string): number => {
 
   return luminance;
 };
+
+// Build a same-origin relative URL for the SCN files endpoint
+function toSameOriginScnFilesUrl(sc_link: string): string {
+  try {
+    // Works for absolute links (http/https)
+    const u = new URL(sc_link);
+    const token = u.searchParams.get("token");
+    if (!token) throw new Error("Missing token in sc_link");
+
+    // Always fetch via same-origin reverse proxy:
+    // final path: /scn-m/scn/getFiles?token=...
+    return `/scn-m/scn/getFiles?token=${encodeURIComponent(token)}`;
+  } catch {
+    // Fallback for already-relative links like "/scn-m/?token=..."
+    const qIndex = sc_link.indexOf("?token=");
+    const token = qIndex >= 0 ? sc_link.slice(qIndex + 7) : "";
+    if (!token) throw new Error("Missing token in sc_link");
+    return `/scn-m/scn/getFiles?token=${encodeURIComponent(token)}`;
+  }
+}
+
 export class PopulationData {
   name: string;
   display_name: string;
@@ -173,31 +194,29 @@ export class PopulationData {
 
   ): Promise<FileTabData> {
     try {
-      const filesLink = sc_link.replace('/?token=', '/scn/getFiles?token=');
-      console.log("Fetching files from:", filesLink);
+      // Convert "https://.../scn-m/?token=XYZ" → "/scn-m/scn/getFiles?token=XYZ"
+      const filesUrl = toSameOriginScnFilesUrl(sc_link);
 
-      const response = await fetch(filesLink);
-      console.log(response.status);
-
+      const response = await fetch(filesUrl, { credentials: "same-origin" });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const fileList = await response.json();
-
-      const files: FileTabData = {
+      return {
         name,
-        display_name: display_name,
-        files: fileList
+        display_name,
+        files: fileList,
       };
-
-      return files;
     } catch (error) {
       console.error("Failed to fetch file data:", error);
       return undefined;
     }
   }
 }
+
+
+
 interface PopulationCardProps {
   population: PopulationData;
   onClose?: () => void;
