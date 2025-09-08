@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Light neutral theme */
-    --background: 0 0% 95%;        /* almost white */
+    --background: 0 0% 100%;        /* almost white */
     --foreground: 220 10% 15%;     /* dark neutral text */
 
     --card: 0 0% 100%;
