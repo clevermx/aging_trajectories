@@ -208,7 +208,8 @@ export class PopulationData {
   public static async fillFilesFromSCNLink(
     name: string,
     display_name: string,
-    sc_link: string
+    sc_link: string,
+    add_prefix?:boolean
   ): Promise<FileTabData> {
     try {
       const filesUrl = toSameOriginScnFilesUrl(sc_link); // your existing helper
@@ -222,6 +223,7 @@ export class PopulationData {
       // Rewrite each entry's path (UI href) based on sc_link
       fileList = fileList.map((f) => ({
         ...f,
+        name: add_prefix? display_name + name : name,
         path: hrefBuilder(sc_link, f.path),
       }));
 
