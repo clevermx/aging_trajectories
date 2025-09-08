@@ -203,6 +203,7 @@ export class PopulationData {
       }
 
       const fileList = await response.json();
+      
       return {
         name,
         display_name,

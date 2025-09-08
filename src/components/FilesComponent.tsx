@@ -42,8 +42,6 @@ const fileTypeMapper = (filename: string): SemanticICONS => {
   return 'linkify' as SemanticICONS;
 };
 
-const fileTypeStripper = (filePath: string) =>
-  _.startsWith(filePath, '/') ? filePath.substring(1) : filePath;
 
 interface FilesComponentProps {
   data: FileTabData;
@@ -71,7 +69,7 @@ export const FilesComponent: React.FC<FilesComponentProps> = ({ data, filesLoade
           verticalAlign="middle"
         />
         <List.Content>
-            <a download href={fileTypeStripper(file.path)} className="font-medium text-blue-600 hover:underline">
+            <a download href={file.path} className="font-medium text-blue-600 hover:underline">
               {file.name}
             </a>
              <div className="text-sm text-gray-500">
