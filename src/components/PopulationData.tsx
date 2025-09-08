@@ -202,8 +202,14 @@ export class PopulationData {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const fileList = await response.json();
-      
+      let fileList = await response.json();
+
+      // Rewrite each file’s link property
+      fileList = fileList.map((f: any) => ({
+        ...f,
+        link: f.link ?? `/scn-m${sc_link}`,
+      }));
+
       return {
         name,
         display_name,
