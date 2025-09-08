@@ -107,6 +107,25 @@ function toSameOriginScnFilesUrl(sc_link: string): string {
     return `/scn-m/scn/getFiles?token=${encodeURIComponent(token)}`;
   }
 }
+function inferScnBase(scLink: string): "/scn" | "/scn-m" {
+  try {
+    const url = new URL(scLink);
+    // pathname like "/scn-m/" or "/scn/"
+    if (url.pathname.startsWith("/scn-m")) return "/scn-m";
+    return "/scn"; // default
+  } catch {
+    // Fallback if scLink is odd
+    return scLink.includes("/scn-m") ? "/scn-m" : "/scn";
+  }
+}
+
+function buildFileHrefSimple(scLink: string, fsPath: string): string {
+  const base = inferScnBase(scLink);           // "/scn" or "/scn-m"
+  const clean = fsPath.startsWith("/") ? fsPath : `/${fsPath}`;
+  // Avoid double-prefixing if already normalized
+  if (clean.startsWith(`${base}/`)) return clean;
+  return `${base}${clean}`;                     // e.g. "/scn-m/var/..."
+}
 
 export class PopulationData {
   name: string;
@@ -186,43 +205,34 @@ export class PopulationData {
     this.files.color = this.color
   }
 
-
   public static async fillFilesFromSCNLink(
     name: string,
     display_name: string,
     sc_link: string
-
   ): Promise<FileTabData> {
     try {
-      // Convert "https://.../scn-m/?token=XYZ" → "/scn-m/scn/getFiles?token=XYZ"
-      const filesUrl = toSameOriginScnFilesUrl(sc_link);
+      const filesUrl = toSameOriginScnFilesUrl(sc_link); // your existing helper
+      const resp = await fetch(filesUrl, { credentials: "same-origin" });
+      if (!resp.ok) throw new Error(`HTTP error! status: ${resp.status}`);
 
-      const response = await fetch(filesUrl, { credentials: "same-origin" });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      let fileList: any[] = await resp.json();
 
-      let fileList = await response.json();
-
-      // Rewrite each file’s link property
-      fileList = fileList.map((f: any) => ({
+      // Choose the builder you want:
+      const hrefBuilder = buildFileHrefSimple;      // A: simple prefix
+      // Rewrite each entry's path (UI href) based on sc_link
+      fileList = fileList.map((f) => ({
         ...f,
-        link: f.link ?? `/scn-m${sc_link}`,
+        path: hrefBuilder(sc_link, f.path),
       }));
 
-      return {
-        name,
-        display_name,
-        files: fileList,
-      };
-    } catch (error) {
-      console.error("Failed to fetch file data:", error);
+      return { name, display_name, files: fileList };
+    } catch (e) {
+      console.error("Failed to fetch file data:", e);
       return undefined;
     }
   }
+
 }
-
-
 
 interface PopulationCardProps {
   population: PopulationData;
