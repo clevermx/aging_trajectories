@@ -223,7 +223,7 @@ export class PopulationData {
       // Rewrite each entry's path (UI href) based on sc_link
       fileList = fileList.map((f) => ({
         ...f,
-        name: add_prefix? display_name + f.name : f.name,
+        name: add_prefix? `${display_name}:${f.name}` : f.name,
         path: hrefBuilder(sc_link, f.path),
       }));
 
