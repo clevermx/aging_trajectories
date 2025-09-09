@@ -5,6 +5,7 @@ import { assetUrl } from '@/utils/assets';
 
 interface CohortsPageProps {
   cohorts: Record<string, CohortData>;
+  onDownload: () => void;
 }
 
 export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
@@ -59,9 +60,7 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
             <CohortCard
               key={cohort_name}
               cohort={input.cohorts[cohort_name]}
-              onDownload={function (cohort: string | null): void {
-                throw new Error('Function not implemented.');
-              }}
+              onDownload={input.onDownload}
               style={undefined}
             />
           ))}

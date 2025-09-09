@@ -147,7 +147,11 @@ export const MainPage: React.FC = () => {
 
                 {/* Page 0: Intro */}
                 <section className="min-h-screen p-8">
-                    <CohortsPage cohorts={cohort_data} />
+                    <CohortsPage
+                        cohorts={cohort_data}
+                        onDownload={() => {
+                            document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
+                        }} />
                 </section>
 
                 {/* Page 1: Toggle between Grid and DatasetViewer */}

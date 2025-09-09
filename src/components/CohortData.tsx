@@ -165,7 +165,7 @@ export const CohortInfo: React.FC<CohortInfoProps> = ({ cohort, onClose, style }
 };
 interface CohortCardProps {
     cohort: CohortData | null;
-    onDownload: (cohort: string | null) => void;
+    onDownload: () => void;
     style: React.CSSProperties;
 }
 export const CohortCard: React.FC<CohortCardProps> = ({ cohort, onDownload, style }) => {
@@ -199,7 +199,7 @@ export const CohortCard: React.FC<CohortCardProps> = ({ cohort, onDownload, styl
                     {cohort.links.download && (
                         <button className="cohort-button"
                             onClick={() => {
-                                onDownload(cohort.title);
+                                onDownload();
                             }}
                         >
                             Download
