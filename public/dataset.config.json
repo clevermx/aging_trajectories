@@ -17,12 +17,12 @@
                                         },
                                         "bulk_link": {
                                                 "type": "phantasus",
-                                                "link": "not_implemented"
+                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/major_celltypes"
                                         }
                                 },
                                 "number_of_cells": 5267062,
                                 "description": "All celltypes umap coordinates were calculated for a sobset of 800k cells.",
-                                "annotation_details": "To unify cell type labels across the studies, we re-annotated all cells into 58 immune cell types, grouped into 10 major compartments: B cells, CD4 T cells, TRAV1-2⁻ CD8 T cells, mucosal associated invariant T (MAIT) cells, γδ T cells, double-negative (DN) T cells, innate lymphoid cells (ILCs), NK cells, myeloid cells, and progenitors ",
+                                "annotation_details": "To unify cell type labels across the studies, we re-annotated all cells into 58 immune cell types, grouped into 10 major compartments: B cells, CD4 T cells, TRAV1-2⁻ CD8 T cells, mucosal associated invariant T (MAIT) cells, γδ T cells, double-negative (DN) T cells, innate lymphoid cells (ILCs), NK cells, myeloid cells, and progenitors.",
                                 "color": "#e2c8d5",
                                 "clusters": {
                                         "B cells": {
@@ -40,7 +40,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "not_implemented"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/B_cells"
                                                         }
                                                 },
                                                 "number_of_cells": 415688,
@@ -92,7 +92,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "not_implemented"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/CD4_T_cells"
                                                         }
                                                 },
                                                 "number_of_cells": 1994891,
@@ -164,7 +164,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "not_implemented"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/CD8_T_cells"
                                                         }
                                                 },
                                                 "number_of_cells": 1074521,
@@ -246,7 +246,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "not_implemented"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/myeloid_cells"
                                                         }
                                                 },
                                                 "clusters": {
@@ -282,7 +282,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "not_implemented"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/NK_cells"
                                                         }
                                                 },
                                                 "description": "",
@@ -327,7 +327,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "not_implemented"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/gd_T_cells"
                                                         }
                                                 },
                                                 "description": "",

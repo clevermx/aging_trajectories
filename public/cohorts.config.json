@@ -19,16 +19,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "empty_link_for_now"
-                    },
-                    {
-                        "type": "synapse",
-                        "link": "empty_link_for_now"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "empty_link_for_now"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated"
                     }
             }
         },
