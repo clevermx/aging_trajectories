@@ -8,7 +8,8 @@
                 "Caucasian",
                 "Hispanic or Latin American"
             ],
-            "donors": 3,
+            "donors": 96,
+            "date_public":"2024",
             "position": [
                 132,
                 100
@@ -35,7 +36,8 @@
                 "Caucasian",
                 "Hispanic or Latin American"
             ],
-            "donors": 4,
+            "donors": 99,
+            "date_public":"2022",
             "position": [
                 280,
                 110
@@ -60,7 +62,8 @@
             "eth": [
                 "Caucasian"
             ],
-            "donors": 10,
+            "donors": 166,
+            "date_public":"2023",
             "position": [
                 251,
                 279
@@ -85,7 +88,8 @@
             "eth": [
                 "Asian"
             ],
-            "donors": 100,
+            "donors": 33,
+            "date_public":"2025",
             "position": [
                 200,
                 700
@@ -111,7 +115,8 @@
                 "Asian",
                 "Caucasian"
             ],
-            "donors": 200,
+            "donors": 625,
+            "date_public":"2024",
             "position": [
                 250,
                 800
@@ -136,7 +141,8 @@
             "eth": [
                 "Caucasian"
             ],
-            "donors": 200,
+            "donors": 981,
+            "date_public":"2022",
             "position": [
                 355,
                 830

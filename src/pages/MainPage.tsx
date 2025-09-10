@@ -101,6 +101,7 @@ export const MainPage: React.FC = () => {
                     cohort.title,
                     cohort.eth,
                     cohort.donors,
+                    cohort.date_public,
                     cohort.position,
                     cohort.color,
                     cohort.line_to,

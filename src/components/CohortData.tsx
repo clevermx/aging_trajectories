@@ -47,6 +47,7 @@ export class CohortData {
     title: string;
     eth: string[];
     donors: number;
+    date_public?: string;
     position: { x: number, y: number };
     color: string;
     line_to: string;
@@ -60,6 +61,7 @@ export class CohortData {
         title: string,
         eth: string[],
         donors: number,
+        date_public: string,
         position: number[],
         color: string,
         line_to: string,
@@ -68,8 +70,9 @@ export class CohortData {
         this.name = name;
         this.title = title;
         this.eth = eth;
-        this.donors = donors
+        this.donors = donors;
         this.position = { x: position[0], y: position[1] };
+        this.date_public = date_public;
         this.color = color;
         this.line_to = line_to;
         this.color = color;
@@ -148,8 +151,8 @@ export const CohortInfo: React.FC<CohortInfoProps> = ({ cohort, onClose, style }
                 </div>
                 <div className="flex items-center">
                     <Calendar className="text-purple-600 w-5 h-5 mr-3" />
-                    <span className="font-semibold">Study Period:</span>
-                    <span className="ml-2 text-gray-700">2021 – 2024</span>
+                    <span className="font-semibold">Year:</span>
+                    <span className="ml-2 text-gray-700">{cohort.date_public}</span>
                 </div>
                 <div> {/* This div now wraps the ethnicity list */}
                     {cohort.eth.map((ethnicity, index) => (
