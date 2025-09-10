@@ -19,12 +19,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated_clean"
                     }
             }
         },
@@ -46,12 +46,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated_clean"
                     }
             }
         },
@@ -96,12 +96,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SPAC_filtered_donors_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=SPAC_reannotated_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SPAC_filtered_donors_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=SPAC_reannotated_clean"
                     }
             }
         },
@@ -122,12 +122,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated_clean"
                     }
             }
         },
@@ -147,12 +147,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated"
+                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated_clean"
                     }
             }
         }
