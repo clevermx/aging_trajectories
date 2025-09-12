@@ -32,7 +32,7 @@ export interface DatasetViewerProps {
   data: DataSet;
   selectedPopulation: string | null;
   onSelectPopulation: (population: string | null) => void;
-  onDownload: (populationName: string | null) => void;
+  onDownload: () => void;
 }
 export const DatasetViewer: React.FC<DatasetViewerProps> = ({
   data,
@@ -210,7 +210,7 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
             <PopulationCard
               population={data.data.clusters[selectedPopulation]}
               onClose={handleClose}
-              onDownload={() => onDownload(selectedPopulation)}
+              onDownload={onDownload}
               style_extra={{
                 position: 'absolute',
                 top: '50%',
@@ -238,7 +238,7 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
             onClose={() => { }}
             style_extra={{ position: 'static' }}
             layout="inline"
-            onDownload={() => onDownload(null)}
+            onDownload={onDownload}
           />
         </div>
       )}

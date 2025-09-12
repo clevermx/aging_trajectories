@@ -181,7 +181,7 @@ export const MainPage: React.FC = () => {
                             data={data.datasets[0]}
                             selectedPopulation={selectedPopulation}
                             onSelectPopulation={setSelectedPopulation}
-                            onDownload={(popName: string) => {
+                            onDownload={(popName: string | null) => {
                                 setSelectedPopulation(popName);
                                 setSelectedTab(popName);
                                 document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
@@ -192,10 +192,12 @@ export const MainPage: React.FC = () => {
                         <DatasetViewer
                             data={data.datasets[0]}
                             selectedPopulation={selectedPopulation}
-                            onSelectPopulation={setSelectedPopulation}
-                            onDownload={(popName: string) => {
-                                setSelectedPopulation(popName);
-                                setSelectedTab(popName);
+                            onSelectPopulation={(popName: string | null)=>{
+                                setSelectedPopulation(popName)
+                                setSelectedTab(popName)
+                            }
+                            }
+                            onDownload={() => {
                                 document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                             }}
 
