@@ -82,7 +82,6 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
     onSelectPopulation(population);
   };
   const handleClose = () => {
-    onSelectPopulation(null);
     setPopTransform({});
     setPathScale({});
   };
@@ -135,12 +134,19 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
     return { minX, minY, maxX, maxY };
   };
   useEffect(() => {
-  if (selectedPopulation) {
+    if (!selectedPopulation) {
+      handleClose();
+      return;
+    }
+
+    // Protect against invalid keys (like "all_cohorts")
+    if (!data.data.clusters[selectedPopulation]) {
+      handleClose();
+      return;
+    }
+
     handlePopulationClick(selectedPopulation);
-  } else {
-    handleClose()
-  }
-}, [selectedPopulation]);
+  }, [selectedPopulation, data]);
   return (
     <div className="relative w-full h-screen overflow-hidden p-8 flex">
       <div className="absolute inset-0"></div>
@@ -216,7 +222,10 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
           {selectedPopulation && data && svgPositions && Object.keys(svgPositions).length > 0 && (
             <PopulationCard
               population={data.data.clusters[selectedPopulation]}
-              onClose={handleClose}
+              onClose={() => {
+                onSelectPopulation(null);
+                handleClose
+              }}
               onDownload={onDownload}
               style_extra={{
                 position: 'absolute',
