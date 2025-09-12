@@ -134,46 +134,46 @@ export const MainPage: React.FC = () => {
 
         return () => container.removeEventListener("scroll", handleScroll);
     }, [scrollContainerRef.current]);
-    // Sync 1: Tabs → Viewer
+    // Tabs → Viewer
     useEffect(() => {
-        if (!data || !selectedTab) return;
+        if (!data) return;
+        if (!selectedTab) return;
 
         const root = data.datasets[0].data.name;
 
         if (selectedTab === "all_cohorts") {
-            // Cohorts are special: don't touch DatasetViewer selection
-            return;
-        }
-        if (selectedTab === root) {
-            // Root dataset tab means "no cluster selected"
-            if (selectedPopulation !== null) setSelectedPopulation(null);
+            // Cohorts don't affect viewer
             return;
         }
 
-        // Normal case: tab corresponds to a cluster
+        if (selectedTab === root) {
+            if (selectedPopulation !== null) {
+                setSelectedPopulation(null);
+            }
+            return;
+        }
+
         if (selectedPopulation !== selectedTab) {
             setSelectedPopulation(selectedTab);
         }
     }, [selectedTab, selectedPopulation, data]);
 
-    // Sync 2: Viewer → Tabs
+    // Viewer → Tabs (only when tab is *not* already correct)
     useEffect(() => {
         if (!data) return;
+
         const root = data.datasets[0].data.name;
 
         if (selectedPopulation) {
-            // Cluster selected → mirror in tabs (unless we're on cohorts)
-            if (selectedTab !== selectedPopulation && selectedTab !== "all_cohorts") {
+            if (selectedTab !== selectedPopulation) {
                 setSelectedTab(selectedPopulation);
             }
         } else {
-            // No population selected → fallback to root dataset tab
             if (selectedTab !== root && selectedTab !== "all_cohorts") {
                 setSelectedTab(root);
             }
         }
     }, [selectedPopulation, selectedTab, data]);
-
 
     if (!data) return <div>Loading dataset...</div>;
 
