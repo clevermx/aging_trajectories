@@ -134,6 +134,47 @@ export const MainPage: React.FC = () => {
 
         return () => container.removeEventListener("scroll", handleScroll);
     }, [scrollContainerRef.current]);
+    // Sync 1: Tabs → Viewer
+    useEffect(() => {
+        if (!data || !selectedTab) return;
+
+        const root = data.datasets[0].data.name;
+
+        if (selectedTab === "all_cohorts") {
+            // Cohorts are special: don't touch DatasetViewer selection
+            return;
+        }
+        if (selectedTab === root) {
+            // Root dataset tab means "no cluster selected"
+            if (selectedPopulation !== null) setSelectedPopulation(null);
+            return;
+        }
+
+        // Normal case: tab corresponds to a cluster
+        if (selectedPopulation !== selectedTab) {
+            setSelectedPopulation(selectedTab);
+        }
+    }, [selectedTab, selectedPopulation, data]);
+
+    // Sync 2: Viewer → Tabs
+    useEffect(() => {
+        if (!data) return;
+        const root = data.datasets[0].data.name;
+
+        if (selectedPopulation) {
+            // Cluster selected → mirror in tabs (unless we're on cohorts)
+            if (selectedTab !== selectedPopulation && selectedTab !== "all_cohorts") {
+                setSelectedTab(selectedPopulation);
+            }
+        } else {
+            // No population selected → fallback to root dataset tab
+            if (selectedTab !== root && selectedTab !== "all_cohorts") {
+                setSelectedTab(root);
+            }
+        }
+    }, [selectedPopulation, selectedTab, data]);
+
+
     if (!data) return <div>Loading dataset...</div>;
 
     return (
@@ -183,7 +224,6 @@ export const MainPage: React.FC = () => {
                             onSelectPopulation={setSelectedPopulation}
                             onDownload={(popName: string | null) => {
                                 setSelectedPopulation(popName);
-                                setSelectedTab(popName);
                                 document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                             }}
 
@@ -192,11 +232,7 @@ export const MainPage: React.FC = () => {
                         <DatasetViewer
                             data={data.datasets[0]}
                             selectedPopulation={selectedPopulation}
-                            onSelectPopulation={(popName: string | null)=>{
-                                setSelectedPopulation(popName)
-                                setSelectedTab(popName)
-                            }
-                            }
+                            onSelectPopulation={setSelectedPopulation}
                             onDownload={() => {
                                 document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                             }}
@@ -228,8 +264,6 @@ export const MainPage: React.FC = () => {
                     <DownloadPage
                         data={data.datasets[0]}
                         cohorts={cohort_data}
-                        selectedPopulation={selectedPopulation}
-                        onSelectPopulation={setSelectedPopulation}
                         selectedTab={selectedTab}
                         onSelectTab={setSelectedTab}
                         listDownloads={listDownloads} />

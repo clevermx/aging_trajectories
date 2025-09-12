@@ -8,8 +8,6 @@ import { FileTabData } from '@/components/FilesComponent';
 export interface DatasetDownloadPageProps {
   data: DataSet;
   cohorts: Record<string, CohortData>;
-  selectedPopulation: string | null;
-  onSelectPopulation: (population: string | null) => void; // if your FilesViewer expects onSelectTab, you can pass this through
   selectedTab: string | null;
   onSelectTab: (tab: string | null) => void;
   listDownloads: boolean;
@@ -18,8 +16,6 @@ export interface DatasetDownloadPageProps {
 export const DownloadPage: React.FC<DatasetDownloadPageProps> = ({
   data,
   cohorts,
-  selectedPopulation,
-  onSelectPopulation,
   selectedTab,
   onSelectTab,
   listDownloads,
@@ -90,13 +86,7 @@ export const DownloadPage: React.FC<DatasetDownloadPageProps> = ({
             tabs={tabs}
             dataset_name={data.data.name}
             selectedTab={selectedTab}
-            onSelectTab={(tabName) => {
-              onSelectTab(tabName);
-              if (tabName !== "all_cohorts") {
-                onSelectPopulation(tabName);
-              }
-            }}
-
+            onSelectTab={onSelectTab}
           />
         ) : (
           <FilesList tabs={tabs} dataset_name={data.data.name} />

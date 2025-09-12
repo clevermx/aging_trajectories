@@ -134,6 +134,15 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
     });
     return { minX, minY, maxX, maxY };
   };
+  useEffect(() => {
+  if (selectedPopulation) {
+    handlePopulationClick(selectedPopulation);
+  } else {
+    // clear transforms if no selection
+    setPopTransform({});
+    setPathScale({});
+  }
+}, [selectedPopulation]);
   return (
     <div className="relative w-full h-screen overflow-hidden p-8 flex">
       <div className="absolute inset-0"></div>
