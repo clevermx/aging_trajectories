@@ -32,7 +32,12 @@ export function softenColor(hex: string, alpha: number) {
 async function fetchManifest(): Promise<Record<string, string[]>> {
   const manifest_url = assetUrl("images/image_manifest.json");
   const resp = await fetch(manifest_url);
-  return resp.json();
+  const raw: Record<string, string[]> = await resp.json();
+  const converted: Record<string, string[]> = {};
+  Object.entries(raw).forEach(([key, files]) => {
+    converted[key] = files.map(file => assetUrl(`images/${file}`));
+  });
+  return converted;
 }
 
 
@@ -56,9 +61,9 @@ export const MyImageCarousel = (images: string[]) => {
         {images.map((image, index) => (
           <CarouselItem key={index}>
             <div className="flex justify-center items-center h-full">
-              <a href={`/images/${image}`} target="_blank" rel="noopener noreferrer">
+              <a href={image} target="_blank" rel="noopener noreferrer">
                 <img
-                  src={`/images/${image}`}
+                  src={image}
                   alt={image}
                   className="preview-image max-h-48 object-contain rounded-lg shadow-sm border border-gray-300"
                   style={{ cursor: "pointer" }}
