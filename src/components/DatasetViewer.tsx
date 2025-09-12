@@ -138,8 +138,6 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
       handleClose();
       return;
     }
-
-    // Protect against invalid keys (like "all_cohorts")
     if (!data.data.clusters[selectedPopulation]) {
       handleClose();
       return;
@@ -147,6 +145,8 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
 
     handlePopulationClick(selectedPopulation);
   }, [selectedPopulation, data]);
+
+  const isValidCluster = !!(selectedPopulation && data.data.clusters[selectedPopulation]);
   return (
     <div className="relative w-full h-screen overflow-hidden p-8 flex">
       <div className="absolute inset-0"></div>
@@ -219,12 +219,12 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
               })}
           </svg>
           {/* Selected cluster data popup */}
-          {selectedPopulation && data && svgPositions && Object.keys(svgPositions).length > 0 && (
+          {isValidCluster && svgPositions && Object.keys(svgPositions).length > 0 && (
             <PopulationCard
               population={data.data.clusters[selectedPopulation]}
               onClose={() => {
                 onSelectPopulation(null);
-                handleClose
+                handleClose();
               }}
               onDownload={onDownload}
               style_extra={{
@@ -238,7 +238,7 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
         </div>
       </div>
       {/* Right side: Whole dataset info */}
-      {!selectedPopulation && data && svgPositions && Object.keys(svgPositions).length > 0 && (
+      {!isValidCluster && data && svgPositions && Object.keys(svgPositions).length > 0 && (
         <div
           style={{
             width: '30%',
