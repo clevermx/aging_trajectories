@@ -138,9 +138,7 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
   if (selectedPopulation) {
     handlePopulationClick(selectedPopulation);
   } else {
-    // clear transforms if no selection
-    setPopTransform({});
-    setPathScale({});
+    handleClose()
   }
 }, [selectedPopulation]);
   return (

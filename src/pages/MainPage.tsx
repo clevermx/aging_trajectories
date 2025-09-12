@@ -15,7 +15,6 @@ export interface JSONData {
 
 export const MainPage: React.FC = () => {
     const [selectedPopulation, setSelectedPopulation] = useState<string | null>(null);
-    const [selectedTab, setSelectedTab] = useState<string | null>(null);
     const [data, setData] = useState<JSONData | null>(null);
     const [showExplore, setShowExplore] = useState(true);
     const [cohort_data, setCohorts] = useState<Record<string, CohortData>>({});
@@ -134,46 +133,6 @@ export const MainPage: React.FC = () => {
 
         return () => container.removeEventListener("scroll", handleScroll);
     }, [scrollContainerRef.current]);
-    // Tabs → Viewer
-    useEffect(() => {
-        if (!data) return;
-        if (!selectedTab) return;
-
-        const root = data.datasets[0].data.name;
-
-        if (selectedTab === "all_cohorts") {
-            // Cohorts don't affect viewer
-            return;
-        }
-
-        if (selectedTab === root) {
-            if (selectedPopulation !== null) {
-                setSelectedPopulation(null);
-            }
-            return;
-        }
-
-        if (selectedPopulation !== selectedTab) {
-            setSelectedPopulation(selectedTab);
-        }
-    }, [selectedTab, selectedPopulation, data]);
-
-    // Viewer → Tabs (only when tab is *not* already correct)
-    useEffect(() => {
-        if (!data) return;
-
-        const root = data.datasets[0].data.name;
-
-        if (selectedPopulation) {
-            if (selectedTab !== selectedPopulation) {
-                setSelectedTab(selectedPopulation);
-            }
-        } else {
-            if (selectedTab !== root && selectedTab !== "all_cohorts") {
-                setSelectedTab(root);
-            }
-        }
-    }, [selectedPopulation, selectedTab, data]);
 
     if (!data) return <div>Loading dataset...</div>;
 
@@ -193,8 +152,7 @@ export const MainPage: React.FC = () => {
                     <CohortsPage
                         cohorts={cohort_data}
                         onDownload={() => {
-                            setSelectedTab("all_cohorts");
-                            setSelectedPopulation(null);
+                            setSelectedPopulation("all_cohorts");
                             document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                         }} />
                 </section>
@@ -258,14 +216,11 @@ export const MainPage: React.FC = () => {
                         <span className="text-sm text-gray-600">tabs</span>
                     </div>
 
-
-
-
                     <DownloadPage
                         data={data.datasets[0]}
                         cohorts={cohort_data}
-                        selectedTab={selectedTab}
-                        onSelectTab={setSelectedTab}
+                        selectedTab={selectedPopulation}
+                        onSelectTab={setSelectedPopulation}
                         listDownloads={listDownloads} />
                 </section>
 

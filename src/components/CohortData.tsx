@@ -53,7 +53,7 @@ export class CohortData {
           return (PopulationData.fillFilesFromSCNLink(this.name, this.title, link.link, true))
         } else {
           return ({
-            name: this.name,
+            name: "cohorts_" + this.name,
             display_name: this.name,
             files: [
               {
@@ -132,7 +132,7 @@ export const CohortInfo: React.FC<CohortInfoProps> = ({ cohort, onClose, style }
 };
 interface CohortCardProps {
     cohort: CohortData | null;
-    onDownload: () => void;
+    onDownload: (string) => void;
     style: React.CSSProperties;
 }
 export const CohortCard: React.FC<CohortCardProps> = ({ cohort, onDownload, style }) => {
@@ -166,7 +166,7 @@ export const CohortCard: React.FC<CohortCardProps> = ({ cohort, onDownload, styl
                     {cohort.links.download && (
                         <button className="cohort-button"
                             onClick={() => {
-                                onDownload();
+                                onDownload(cohort.name);
                             }}
                         >
                             Download
