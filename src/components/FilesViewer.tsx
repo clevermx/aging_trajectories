@@ -27,7 +27,10 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
 
 
             {/* Tabs for file groups */}
-            <Tabs defaultValue={defaultTab} className="w-full">
+            <Tabs
+                value={selectedTab || Object.values(tabs)[0].name}
+                onValueChange={(val) => onSelectTab(val)} 
+                className="w-full">
                 {/* Tab headers */}
                 <TabsList className="flex flex-wrap gap-1 mb-0 border-gray-200 bg-transparent">
                     {Object.values(tabs).map((tab) => (
