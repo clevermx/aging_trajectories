@@ -10,7 +10,8 @@ export interface DatasetDownloadPageProps {
   cohorts: Record<string, CohortData>;
   selectedPopulation: string | null;
   onSelectPopulation: (population: string | null) => void; // if your FilesViewer expects onSelectTab, you can pass this through
-  onDownload: () => void;
+  selectedTab: string | null;
+  onSelectTab: (tab: string | null) => void;
   listDownloads: boolean;
 }
 
@@ -19,7 +20,8 @@ export const DownloadPage: React.FC<DatasetDownloadPageProps> = ({
   cohorts,
   selectedPopulation,
   onSelectPopulation,
-  onDownload,
+  selectedTab,
+  onSelectTab,
   listDownloads,
 }) => {
   // Build tabs safely & memoized
@@ -87,10 +89,14 @@ export const DownloadPage: React.FC<DatasetDownloadPageProps> = ({
           <FilesViewer
             tabs={tabs}
             dataset_name={data.data.name}
-            selectedTab={selectedPopulation}
-            // If FilesViewer expects `onSelectTab`, pass the same function:
-            onSelectTab={onSelectPopulation as any}
-            // OR change FilesViewer to take `onSelectPopulation` and keep types aligned.
+            selectedTab={selectedTab}
+            onSelectTab={(tabName) => {
+              onSelectTab(tabName);
+              if (tabName !== "all_cohorts") {
+                onSelectPopulation(tabName);
+              }
+            }}
+
           />
         ) : (
           <FilesList tabs={tabs} dataset_name={data.data.name} />

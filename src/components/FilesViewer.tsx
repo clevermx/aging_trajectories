@@ -9,14 +9,14 @@ export interface FilesViewerProps {
     tabs: Record<string, FileTabData>;
     selectedTab: string | null;
     onSelectTab: (tab: string | null) => void;
-
 }
 
 export const FilesViewer: React.FC<FilesViewerProps> = ({
     dataset_name,
     tabs,
     selectedTab,
-    onSelectTab,
+    onSelectTab
+
 }) => {
     const defaultTab = selectedTab || Object.values(tabs)[0].name;
     const tabKeys = Object.keys(tabs);

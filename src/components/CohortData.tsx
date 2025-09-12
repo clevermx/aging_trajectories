@@ -6,42 +6,6 @@ import './CohortData.css'
 import { FileTabData } from './FilesComponent';
 import { PopulationData } from './PopulationData';
 
-//     "soundLife": {
-//         "title": "Sound Life",
-//         "eth": [
-//             "African American",
-//             "Asian",
-//             "Caucasian",
-//             "Hispanic or Latin American"
-//         ],
-//         "donors": 3,
-//         "position": [
-//             132,
-//             100
-//         ],
-//         "color": "#C4B454",
-//         "line_to": "",
-//         "links": {
-//             "download": [
-//                 {
-//                     "type": "scn",
-//                     "link": "empty_link_for_now"
-//                 },
-//                 {
-//                     "type": "synapse",
-//                     "link": "empty_link_for_now"
-//                 }
-//             ],
-//             "view": [
-//                 {
-//                     "type": "scn",
-//                     "link": "empty_link_for_now"
-//                 }
-//             ]
-//         }
-//     }
-// }
-
 export class CohortData {
     name: string;
     title: string;

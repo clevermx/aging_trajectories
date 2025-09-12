@@ -3,11 +3,13 @@ import React from 'react';
 import { PopulationCard, PopulationData } from './PopulationData';
 import { DataSet } from './PopulationJson';
 
+
+
 export interface PopulationGridProps {
   data: DataSet;
   selectedPopulation: string | null;
   onSelectPopulation: (population: string | null) => void;
-  onDownload: () => void;
+  onDownload: (populationName: string | null) => void;
 }
 
 export const PopulationGrid: React.FC<PopulationGridProps> = ({
@@ -19,7 +21,7 @@ export const PopulationGrid: React.FC<PopulationGridProps> = ({
   const handleDownloadClick = (population: string | null) => {
     console.log("selected: ", population);
     onSelectPopulation(population);
-    onDownload();
+    onDownload(population);
   };
 
   // Helper to check if a population has at least one link

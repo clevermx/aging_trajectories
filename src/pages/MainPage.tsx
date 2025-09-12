@@ -15,6 +15,7 @@ export interface JSONData {
 
 export const MainPage: React.FC = () => {
     const [selectedPopulation, setSelectedPopulation] = useState<string | null>(null);
+    const [selectedTab, setSelectedTab] = useState<string | null>(null);
     const [data, setData] = useState<JSONData | null>(null);
     const [showExplore, setShowExplore] = useState(true);
     const [cohort_data, setCohorts] = useState<Record<string, CohortData>>({});
@@ -151,6 +152,8 @@ export const MainPage: React.FC = () => {
                     <CohortsPage
                         cohorts={cohort_data}
                         onDownload={() => {
+                            setSelectedTab("all_cohorts");
+                            setSelectedPopulation(null);
                             document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                         }} />
                 </section>
@@ -178,18 +181,24 @@ export const MainPage: React.FC = () => {
                             data={data.datasets[0]}
                             selectedPopulation={selectedPopulation}
                             onSelectPopulation={setSelectedPopulation}
-                            onDownload={() => {
+                            onDownload={(popName: string) => {
+                                setSelectedPopulation(popName);
+                                setSelectedTab(popName);
                                 document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                             }}
+
                         />
                     ) : (
                         <DatasetViewer
                             data={data.datasets[0]}
                             selectedPopulation={selectedPopulation}
                             onSelectPopulation={setSelectedPopulation}
-                            onDownload={() => {
+                            onDownload={(popName: string) => {
+                                setSelectedPopulation(popName);
+                                setSelectedTab(popName);
                                 document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
                             }}
+
                         />
                     )}
                 </section>
@@ -218,10 +227,9 @@ export const MainPage: React.FC = () => {
                         data={data.datasets[0]}
                         cohorts={cohort_data}
                         selectedPopulation={selectedPopulation}
-                        onSelectPopulation={() => { }}
-                        onDownload={() => {
-                            document.querySelector("#downloads")?.scrollIntoView({ behavior: "smooth" });
-                        }}
+                        onSelectPopulation={setSelectedPopulation}
+                        selectedTab={selectedTab}
+                        onSelectTab={setSelectedTab}
                         listDownloads={listDownloads} />
                 </section>
 
