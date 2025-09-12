@@ -50,7 +50,7 @@ export class CohortData {
     const filePromises = this.links.download
       .map(link => {
         if (link.type == "scn") {
-          return (PopulationData.fillFilesFromSCNLink(this.name, this.title, link.link, true))
+          return (PopulationData.fillFilesFromSCNLink(this.name, this.title, link.link, false))
         } else {
           return ({
             name: "cohorts_" + this.name,

@@ -13,6 +13,7 @@ import {
 } from './ui/carousel';
 import { FileTabData } from './FilesComponent';
 import { MyLink } from './MyLink';
+import { assetUrl } from '@/utils/assets';
 
 export function softenColor(hex: string, alpha: number) {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -28,19 +29,22 @@ export function softenColor(hex: string, alpha: number) {
   return `rgba(${rSoft}, ${gSoft}, ${bSoft}, ${alpha})`;
 }
 
-export function getImagesForDataset(dataset: string, population: string): string[] {
-  const imageFiles = [
-
-    'all_atlas__0__correlation.png',
-    'all_atlas__0__heatmap.png',
-    'all_atlas__0__static umap.png',
-    'all_atlas__main__cells per study.png',
-    'all_atlas__main__heatmap.png',
-    'all_atlas__main__proportions.png'
-
-  ];
-  return imageFiles.filter(file => file.startsWith(dataset + "__" + population));
+async function fetchManifest(): Promise<Record<string, string[]>> {
+  const manifest_url = assetUrl("images/image_manifest");
+  const resp = await fetch("manifest_url");
+  return resp.json();
 }
+
+
+export function getImagesForPopulation(
+  manifest: Record<string, string[]>,
+  population: string,
+): string[] {
+  if (manifest[population]) return manifest[population];
+  return [];
+}
+
+
 
 export const MyImageCarousel = (images: string[]) => {
   return (
@@ -209,7 +213,7 @@ export class PopulationData {
     name: string,
     display_name: string,
     sc_link: string,
-    add_prefix?:boolean
+    add_prefix?: boolean
   ): Promise<FileTabData> {
     try {
       const filesUrl = toSameOriginScnFilesUrl(sc_link); // your existing helper
@@ -223,7 +227,7 @@ export class PopulationData {
       // Rewrite each entry's path (UI href) based on sc_link
       fileList = fileList.map((f) => ({
         ...f,
-        name: add_prefix? `${display_name}:${f.name}` : f.name,
+        name: add_prefix ? `${display_name}:${f.name}` : f.name,
         path: hrefBuilder(sc_link, f.path),
       }));
 
@@ -254,17 +258,14 @@ export const PopulationCard = ({
   const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
-
-    if (population.parent) {
-      const files = getImagesForDataset(population.parent.name, population.name);
+    fetchManifest().then(manifest => {
+      const files = getImagesForPopulation(
+        manifest,
+        population.name
+      );
       setImages(files);
-    } else {
-      const files = getImagesForDataset(population.name, "main");
-      setImages(files);
-    }
-
-
-  }, [population.parent, population.name]);
+    });
+  }, [population.name]);
 
   // Wrapper styles
   const wrapperClasses =
