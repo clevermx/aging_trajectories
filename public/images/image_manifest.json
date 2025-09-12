@@ -24,9 +24,9 @@
     "gd_umap.png"
   ],
   "all_atlas": [
-    "all_cell_umap.png",
+    "all_cells_umap.png",
     "all_cells_heatmap.png",
-    "all_cell_proportions.png",
-    "all_cell_types.png"
+    "all_cells_proportions.png",
+    "all_celltypes.png"
   ]
 }

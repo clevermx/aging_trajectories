@@ -30,8 +30,8 @@ export function softenColor(hex: string, alpha: number) {
 }
 
 async function fetchManifest(): Promise<Record<string, string[]>> {
-  const manifest_url = assetUrl("images/image_manifest");
-  const resp = await fetch("manifest_url");
+  const manifest_url = assetUrl("images/image_manifest.json");
+  const resp = await fetch(manifest_url);
   return resp.json();
 }
 
