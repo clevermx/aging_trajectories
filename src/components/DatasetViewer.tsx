@@ -138,13 +138,18 @@ export const DatasetViewer: React.FC<DatasetViewerProps> = ({
       handleClose();
       return;
     }
+
+    // only act if it's a valid cluster
     if (!data.data.clusters[selectedPopulation]) {
       handleClose();
       return;
     }
 
-    handlePopulationClick(selectedPopulation);
-  }, [selectedPopulation, data]);
+    // only run if we already have svgPositions computed
+    if (Object.keys(svgPositions).length > 0) {
+      handlePopulationClick(selectedPopulation);
+    }
+  }, [selectedPopulation, data, svgPositions]);
 
   const isValidCluster = !!(selectedPopulation && data.data.clusters[selectedPopulation]);
   return (
