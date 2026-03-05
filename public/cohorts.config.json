@@ -83,6 +83,32 @@
                     }
             }
         },
+        "kcl": {
+            "title": "KCL",
+            "eth": [
+                "Caucasian"
+            ],
+            "donors": 184,
+            "date_public":"2026",
+            "position": [
+                251,
+                500
+            ],
+            "color": "#c7519eff",
+            "line_to": "",
+            "links": {
+                "download": [
+                    {
+                        "type": "scn",
+                        "link": "not_implemented_yet"
+                    }
+                ],
+                "view": {
+                        "type": "scn",
+                        "link": "not_implemented_yet"
+                    }
+            }
+        },
         "spac": {
             "title": "SPAC",
             "eth": [
