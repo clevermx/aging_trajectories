@@ -20,12 +20,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_new_annotation_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SoundLife_new_annotation_clean"
                     }
             }
         },
@@ -48,12 +48,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=UCSF_new_annotation_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=UCSF_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=UCSF_new_annotation_clean"
                     }
             }
         },
@@ -74,12 +74,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=ABF300_reannotated"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=ABF300_new_annotation_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=ABF300_reannotated"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=ABF300_new_annotation_clean"
                     }
             }
         },
@@ -100,12 +100,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "not_implemented_yet"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=KCL_new_annotation_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "not_implemented_yet"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=KCL_new_annotation_clean"
                     }
             }
         },
@@ -126,12 +126,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=SPAC_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SPAC_new_annotation_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=SPAC_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=SPAC_new_annotation_clean"
                     }
             }
         },
@@ -153,12 +153,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=AIDA_new_annotation_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=AIDA_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=AIDA_new_annotation_clean"
                     }
             }
         },
@@ -179,12 +179,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=OneK1K_new_annotation_clean"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "http://artyomovlab.wustl.edu/scn-m/?token=OneK1K_reannotated_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=OneK1K_new_annotation_clean"
                     }
             }
         }
