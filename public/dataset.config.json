@@ -17,7 +17,7 @@
                                         },
                                         "bulk_link": {
                                                 "type": "phantasus",
-                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/major_celltypes"
+                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_major_celltypes"
                                         }
                                 },
                                 "number_of_cells": 12394834,
