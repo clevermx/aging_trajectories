@@ -40,7 +40,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/B_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_B_cells"
                                                         }
                                                 },
                                                 "number_of_cells": 1028596,
@@ -91,7 +91,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/CD4_T_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_CD4_T_cells"
                                                         }
                                                 },
                                                 "number_of_cells": 1994891,
@@ -163,7 +163,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/CD8_T_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_CD8_T_cells"
                                                         }
                                                 },
                                                 "number_of_cells": 1074521,
@@ -245,7 +245,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/myeloid_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_myeloid_cells"
                                                         }
                                                 },
                                                 "clusters": {
@@ -281,7 +281,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/NK_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_NK_cells"
                                                         }
                                                 },
                                                 "description": "",
@@ -329,7 +329,7 @@
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
-                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/gd_T_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_gd_T_cells"
                                                         }
                                                 },
                                                 "description": "",
