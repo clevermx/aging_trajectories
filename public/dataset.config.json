@@ -425,7 +425,7 @@
                                                 }
                                         ]
                                 },
-                                "clustering_borders": {
+                                "umap_clustering_borders": {
                                         "type": "polygon",
                                         "value": "group",
                                         "coords": [
