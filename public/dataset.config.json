@@ -76,25 +76,25 @@
                                                 "description": "",
                                                 "color": "#F2A38B"
                                         },
-                                        "CD4 T": {
+                                        "CD4_T": {
                                                 "display_name": "CD4 T cells",
                                                 "links": {
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=divergent_healthy_aging_cd4_t_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD4T_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=divergent_healthy_aging_cd4_t_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD4T_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
                                                                 "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_CD4_T_cells"
                                                         }
                                                 },
-                                                "number_of_cells": 1994891,
+                                                "number_of_cells": 4698448,
                                                 "clusters": {
                                                         "0": {
                                                                 "display_name": "Exhausted-like memory"
@@ -103,82 +103,88 @@
                                                                 "display_name": "HLA-DR+ memory"
                                                         },
                                                         "2": {
-                                                                "display_name": "Naive"
+                                                                "display_name": "IFN+ cells"
                                                         },
                                                         "3": {
-                                                                "display_name": "RTE"
+                                                                "display_name": "Naive"
                                                         },
                                                         "4": {
-                                                                "display_name": "Temra"
+                                                                "display_name": "Proliferative"
                                                         },
                                                         "5": {
-                                                                "display_name": "Terminal effector"
+                                                                "display_name": "RTE"
                                                         },
                                                         "6": {
-                                                                "display_name": "Tfh"
+                                                                "display_name": "Temra"
                                                         },
                                                         "7": {
-                                                                "display_name": "Th1"
+                                                                "display_name": "Terminal effector"
                                                         },
                                                         "8": {
-                                                                "display_name": "Th1/Th17"
+                                                                "display_name": "Tfh"
                                                         },
                                                         "9": {
-                                                                "display_name": "Th2"
+                                                                "display_name": "Th1"
                                                         },
                                                         "10": {
-                                                                "display_name": "Th17"
+                                                                "display_name": "Th1/Th17"
                                                         },
                                                         "11": {
-                                                                "display_name": "Th22"
+                                                                "display_name": "Th2"
                                                         },
                                                         "12": {
-                                                                "display_name": "Treg KLRB1+RORC+"
+                                                                "display_name": "Th17"
                                                         },
                                                         "13": {
-                                                                "display_name": "Treg cytotoxic"
+                                                                "display_name": "Th22"
                                                         },
                                                         "14": {
-                                                                "display_name": "Treg memory"
+                                                                "display_name": "Treg KLRB1+RORC+"
                                                         },
                                                         "15": {
+                                                                "display_name": "Treg cytotoxic"
+                                                        },
+                                                        "16": {
+                                                                "display_name": "Treg memory"
+                                                        },
+                                                        "17": {
                                                                 "display_name": "Treg naive"
                                                         }
                                                 },
                                                 "description": "",
                                                 "color": "#8DD3C7"
                                         },
-                                        "CD8 T": {
+                                        "CD8_T": {
                                                 "display_name": "TRAV-1-2- CD8 T cells",
                                                 "links": {
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=divergent_healthy_aging_cd8_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD8T_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=divergent_healthy_aging_cd8_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD8T_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
                                                                 "link": "https://artyomovlab.wustl.edu/phantasus/?preloaded=human_immune_aging_trajectories/pan-atlas_CD8_T_cells"
                                                         }
                                                 },
-                                                "number_of_cells": 1074521,
+                                                "number_of_cells": 2626538,
                                                 "clusters": {
                                                         "0": {
                                                                 "display_name": "HLA-DR+"
                                                         },
                                                         "1": {
-                                                                "display_name": "NKT-like"
+                                                                "display_name": "IFN+ cells"
                                                         },
                                                         "2": {
-                                                                "display_name": "Naive"
+                                                                "display_name":  "NKT-like"
                                                         },
                                                         "3": {
-                                                                "display_name": "Naive-IFN"
+                                                                "display_name": "Naive"
                                                         },
                                                         "4": {
                                                                 "display_name": "Proliferative"
@@ -208,10 +214,10 @@
                                                                 "display_name": "Trm"
                                                         }
                                                 },
-                                                "description": "good description of Mait cells",
+                                                "description": "",
                                                 "color": "#9CC4E4"
                                         },
-                                        "DN T": {
+                                        "DN_T": {
                                                 "display_name": "DN T cells",
                                                 "number_of_cells": 10389,
                                                 "description": "",
@@ -313,7 +319,7 @@
                                                 "description": "",
                                                 "color": "#B5E3B5"
                                         },
-                                        "gd T": {
+                                        "gd_T": {
                                                 "display_name": "gd T cells",
                                                 "number_of_cells": 480241,
                                                 "links": {
@@ -370,19 +376,19 @@
                                                         "Text": "B"
                                                 },
                                                 {
-                                                        "clustering": "CD4 T",
+                                                        "clustering": "CD4_T",
                                                         "umap_1": 3.96,
                                                         "umap_2": -2.8498,
                                                         "Text": "CD4 T"
                                                 },
                                                 {
-                                                        "clustering": "CD8 T",
+                                                        "clustering": "CD8_T",
                                                         "umap_1": 1.7574,
                                                         "umap_2": 2.4576,
                                                         "Text": "CD8 T"
                                                 },
                                                 {
-                                                        "clustering": "DN T",
+                                                        "clustering": "DN_T",
                                                         "umap_1": 0.7905,
                                                         "umap_2": 0.6644,
                                                         "Text": "DN T"
@@ -418,7 +424,7 @@
                                                         "Text": "Progenitor"
                                                 },
                                                 {
-                                                        "clustering": "gd T",
+                                                        "clustering": "gd_T",
                                                         "umap_1": -0.3707,
                                                         "umap_2": 4.6403,
                                                         "Text": "gd T"

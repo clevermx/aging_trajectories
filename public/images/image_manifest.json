@@ -1,27 +1,21 @@
 {
-  "B cells": [
-    "B_heatmap.png",
-    "B_umap.png"
+  "B": [
+    "B_heatmap.png"
   ],
-  "CD4 T cells": [
-    "cd4_heatmap.png",
-    "cd4_umap.png"
+  "CD4_T": [
+    "CD4_T_heatmap.png"
   ],
-  "CD8 T cells": [
-    "cd8_heatmap.png",
-    "cd8_umap.png"
+  "CD8_T": [
+    "CD8_T_heatmap.png"
   ],
-  "Myeloid cells": [
-    "myeloid_heatmap.png",
-    "myeloid_umap.png"
+  "Myeloid": [
+    "myeloid_heatmap.png"
   ],
-  "NK cells": [
-    "nk_heatmap.png",
-    "nk_umap.png"
+  "NK": [
+    "NK_heatmap.png"
   ],
-  "gd T cells": [
-    "gd_heatmap.png",
-    "gd_umap.png"
+  "gd_T": [
+    "gd_T_heatmap.png"
   ],
   "all_atlas": [
     "all_cells_umap.png",
