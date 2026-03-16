@@ -2,10 +2,10 @@
   "B": [
     "B_heatmap.png"
   ],
-  "CD4_T": [
+  "CD4 T": [
     "CD4_T_heatmap.png"
   ],
-  "CD8_T": [
+  "CD8 T": [
     "CD8_T_heatmap.png"
   ],
   "Myeloid": [
@@ -14,7 +14,7 @@
   "NK": [
     "NK_heatmap.png"
   ],
-  "gd_T": [
+  "gd T": [
     "gd_T_heatmap.png"
   ],
   "all_atlas": [

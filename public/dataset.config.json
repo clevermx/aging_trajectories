@@ -76,7 +76,7 @@
                                                 "description": "",
                                                 "color": "#F2A38B"
                                         },
-                                        "CD4_T": {
+                                        "CD4 T": {
                                                 "display_name": "CD4 T cells",
                                                 "links": {
                                                         "download": [
@@ -154,7 +154,7 @@
                                                 "description": "",
                                                 "color": "#8DD3C7"
                                         },
-                                        "CD8_T": {
+                                        "CD8 T": {
                                                 "display_name": "TRAV-1-2- CD8 T cells",
                                                 "links": {
                                                         "download": [
@@ -217,7 +217,7 @@
                                                 "description": "",
                                                 "color": "#9CC4E4"
                                         },
-                                        "DN_T": {
+                                        "DN T": {
                                                 "display_name": "DN T cells",
                                                 "number_of_cells": 10389,
                                                 "description": "",
@@ -319,7 +319,7 @@
                                                 "description": "",
                                                 "color": "#B5E3B5"
                                         },
-                                        "gd_T": {
+                                        "gd T": {
                                                 "display_name": "gd T cells",
                                                 "number_of_cells": 480241,
                                                 "links": {
@@ -376,19 +376,19 @@
                                                         "Text": "B"
                                                 },
                                                 {
-                                                        "clustering": "CD4_T",
+                                                        "clustering": "CD4 T",
                                                         "umap_1": 3.96,
                                                         "umap_2": -2.8498,
                                                         "Text": "CD4 T"
                                                 },
                                                 {
-                                                        "clustering": "CD8_T",
+                                                        "clustering": "CD8 T",
                                                         "umap_1": 1.7574,
                                                         "umap_2": 2.4576,
                                                         "Text": "CD8 T"
                                                 },
                                                 {
-                                                        "clustering": "DN_T",
+                                                        "clustering": "DN T",
                                                         "umap_1": 0.7905,
                                                         "umap_2": 0.6644,
                                                         "Text": "DN T"
@@ -424,7 +424,7 @@
                                                         "Text": "Progenitor"
                                                 },
                                                 {
-                                                        "clustering": "gd_T",
+                                                        "clustering": "gd T",
                                                         "umap_1": -0.3707,
                                                         "umap_2": 4.6403,
                                                         "Text": "gd T"
