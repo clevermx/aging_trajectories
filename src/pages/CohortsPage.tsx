@@ -54,7 +54,7 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
       </div>
 
       {/* Container for Cohort Cards */}
-      <div className="flex flex-wrap justify-center gap-6 mt-4">
+      <div className="flex flex-wrap justify-center gap-4 mt-4">
         {Object.keys(input.cohorts).length > 0 &&
           Object.keys(input.cohorts).map((cohort_name) => (
             <CohortCard
