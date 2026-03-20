@@ -142,7 +142,7 @@ export const CohortCard: React.FC<CohortCardProps> = ({ cohort, onDownload, styl
     }
     return (
 
-        <div style={{ ...style }}
+        <div className="flex-[1_1_200px] max-w-[220px]" style={{ ...style }}
         >
             <div
                 className="cohort-card"
