@@ -7,7 +7,7 @@
     text-align: center;
 }
 .cohort-title {
-    margin: 0 0 10px 0;
+    margin: 0 0 20px 0;
     color: hsl(var(--card-foreground));
 }
 .button-row {
@@ -16,7 +16,7 @@
 }
 .cohort-button {
     flex: 1;
-    padding: 6px 12px; /* Equivalent to py-2 and px-5 */
+    padding: 10px 12px; /* Equivalent to py-2 and px-5 */
     margin: 0 5px;
     border: 1px solid rgba(255, 255, 255, 0.5); /* Simulates bg-white/50 */
     border-radius: var(--radius); /* Equivalent to rounded-lg */
