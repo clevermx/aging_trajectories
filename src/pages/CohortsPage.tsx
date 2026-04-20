@@ -53,7 +53,6 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
 
           </div>
         </div>
-        </div>
       </div>
 
       {/* Suggestion text */}
