@@ -38,16 +38,16 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
           </div>
           <div className="flex-1 flex items-center justify-center">
             <div className="space-y-4 text-left">
-              <p className="text-5xl font-bold text-red-800 tracking-tight">
-                8 <span className="text-xl font-medium text-gray-600">datasets</span>
+              <p className="text-4xl font-bold text-red-800 tracking-tight">
+                8 <span className="text-2xl font-medium text-gray-600">datasets</span>
               </p>
 
-              <p className="text-5xl font-bold text-red-800 tracking-tight">
-                2609 <span className="text-xl font-medium text-gray-600">donors</span>
+              <p className="text-4xl font-bold text-red-800 tracking-tight">
+                2609 <span className="text-2xl font-medium text-gray-600">donors</span>
               </p>
 
-              <p className="text-5xl font-bold text-red-800 tracking-tight">
-                12.3M <span className="text-xl font-medium text-gray-600">cells</span>
+              <p className="text-4xl font-bold text-red-800 tracking-tight">
+                12.3M <span className="text-2xl font-medium text-gray-600">cells</span>
               </p>
 
             </div>
