@@ -36,7 +36,6 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div>
             <div className="space-y-3">
               <p className="text-3xl md:text-4xl font-extrabold text-red-800 tracking-wide">
                 8 datasets
