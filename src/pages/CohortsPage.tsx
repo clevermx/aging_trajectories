@@ -29,7 +29,13 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
         </div>
 
         {/* Column 2: Image + Rectangle (30%) */}
-        <div className="flex-1 flex items-center justify-center text-center p-6">
+        <div className="basis-[30%] flex flex-col">
+          <div className="flex-1">
+            <img
+              src={assetUrl("images/intro_page/design.png")}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="w-full max-w-xs bg-gradient-to-br from-white to-red-50 rounded-2xl shadow-lg border border-gray-100 p-6 space-y-5">
             <div className="space-y-4">
               <p className="text-5xl font-extrabold text-red-800 tracking-tight">
