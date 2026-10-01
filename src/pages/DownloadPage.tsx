@@ -20,29 +20,36 @@ export const DownloadPage: React.FC<DatasetDownloadPageProps> = ({
   onSelectTab,
   listDownloads,
 }) => {
-  // Build tabs safely & memoized
   const tabs: Record<string, FileTabData> = useMemo(() => {
     const out: Record<string, FileTabData> = {};
 
-    // Root dataset files (if present)
     const rootFiles = data?.data?.files?.files ?? [];
-    if (rootFiles.length > 0 && data?.data?.files) {
-      out[data.data.name] = {
-        ...data.data.files,
-        name: data.data.name,
-        display_name: data.data.display_name ?? data.data.name,
-        color: data.data.color,
-        files: rootFiles,
+
+    const cohortFiles = Object.values(cohorts).flatMap(
+      (c) => c?.files?.files ?? []
+    );
+
+    const reannotatedFiles = [
+      ...rootFiles,
+      ...cohortFiles,
+    ];
+
+    if (reannotatedFiles.length > 0) {
+      out['all_cohorts'] = {
+        name: 'all_cohorts',
+        display_name: 'Reannotated datasets',
+        color: '#add8e6',
+        files: reannotatedFiles,
       };
     }
 
-    // Subset/cluster files
     const clusters = data?.data?.clusters ?? {};
+
     Object.values(clusters).forEach((subset) => {
       const subsetFiles = subset?.files?.files ?? [];
+
       if (subsetFiles.length > 0 && subset.files) {
-        const key = subset.name; // key should be unique (use .name)
-        out[key] = {
+        out[subset.name] = {
           ...subset.files,
           name: subset.name,
           display_name: subset.display_name ?? subset.name,
@@ -51,19 +58,6 @@ export const DownloadPage: React.FC<DatasetDownloadPageProps> = ({
         };
       }
     });
-
-    // Merge cohorts’ files into a single tab
-    const mergedCohortFiles = Object.values(cohorts).flatMap(
-      (c) => c?.files?.files ?? []
-    );
-    if (mergedCohortFiles.length > 0) {
-      out['all_cohorts'] = {
-        name: 'all_cohorts',
-        display_name: 'Reannotated datasets',
-        color: '#add8e6',
-        files: mergedCohortFiles,
-      };
-    }
 
     return out;
   }, [data, cohorts]);

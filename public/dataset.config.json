@@ -8,12 +8,12 @@
                                         "download": [
                                                 {
                                                         "type": "scn",
-                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_all_celtypes"
+                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_all_celtypes"
                                                 }
                                         ],
                                         "sc_link": {
                                                 "type": "scn",
-                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_all_celtypes"
+                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_all_celtypes"
                                         },
                                         "bulk_link": {
                                                 "type": "phantasus",
@@ -31,12 +31,12 @@
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "httphttps://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_B_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_B_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_B_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_B_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
@@ -82,12 +82,12 @@
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD4T_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_cd4_t_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD4T_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_cd4_t_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
@@ -160,12 +160,12 @@
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD8T_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_cd8_t_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_CD8T_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_cd8_t_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
@@ -242,12 +242,12 @@
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_Myeloid_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_Myeloid_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_Myeloid_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_Myeloid_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
@@ -278,12 +278,12 @@
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_NK_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_NK_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_NK_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_NK_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",
@@ -326,12 +326,12 @@
                                                         "download": [
                                                                 {
                                                                         "type": "scn",
-                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_gdT_cells"
+                                                                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_gdT_cells"
                                                                 }
                                                         ],
                                                         "sc_link": {
                                                                 "type": "scn",
-                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan-atlas_healthy_aging_gdT_cells"
+                                                                "link": "https://artyomovlab.wustl.edu/scn-m/?token=pan_atlas_healthy_aging_gdT_cells"
                                                         },
                                                         "bulk_link": {
                                                                 "type": "phantasus",

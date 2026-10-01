@@ -100,12 +100,12 @@
                 "download": [
                     {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=KCL_new_annotation_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=KCL_annotation"
                     }
                 ],
                 "view": {
                         "type": "scn",
-                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=KCL_new_annotation_clean"
+                        "link": "https://artyomovlab.wustl.edu/scn-m/?token=KCL_annotation"
                     }
             }
         },
