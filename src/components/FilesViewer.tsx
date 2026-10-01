@@ -47,52 +47,66 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
             items-end
           "
         >
-          {Object.values(tabs).map((tab) => (
+        {Object.values(tabs).map((tab) => {
+        const isActive = activeTab === tab.name;
+
+        return (
             <TabsTrigger
-              key={tab.name}
-              value={tab.name}
-              className="
+            key={tab.name}
+            value={tab.name}
+            className="
+                relative
                 px-4 py-3
                 text-sm font-medium
                 transition-colors
-
                 rounded-t-lg
                 rounded-b-none
-
                 border
-                border-b-0
+            "
+            style={{
+                backgroundColor: isActive
+                ? `${tab.color}30`
+                : tab.color || "var(--muted)",
 
-                data-[state=active]:text-white
-              "
-              style={{
-                backgroundColor: tab.color || "var(--muted)",
                 borderColor: tab.color || "#e5e7eb",
-              }}
+
+                // Active tab merges into panel below
+                borderBottomColor: isActive
+                ? `${tab.color}30`
+                : tab.color || "#e5e7eb",
+
+                // Put active tab over panel's top border
+                zIndex: isActive ? 2 : 1,
+
+                // Extend it slightly over the panel
+                marginBottom: isActive ? "-1px" : "0",
+            }}
             >
-              {tab.display_name}
+            {tab.display_name}
             </TabsTrigger>
-          ))}
+        );
+        })}
         </TabsList>
 
         {/* Content */}
         {Object.values(tabs).map((tab) => (
-          <TabsContent
+            <TabsContent
             key={tab.name}
             value={tab.name}
             className="
-              mt-0
-              rounded-xl
-              border
-              shadow-sm
-              p-5 sm:p-6
+                mt-0
+                rounded-xl
+                border
+                shadow-sm
+                p-5 sm:p-6
             "
             style={{
-              backgroundColor: tab.color
+                backgroundColor: tab.color
                 ? `${tab.color}30`
                 : "#f9f9f9",
-              borderColor: tab.color || "#e5e7eb",
+                borderColor: tab.color || "#e5e7eb",
             }}
-          >
+            >
             <DownloadGuide
               tabName={tab.name}
               displayName={tab.display_name}
