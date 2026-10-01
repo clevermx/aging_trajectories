@@ -17,7 +17,7 @@ export const CohortsPage: React.FC<CohortsPageProps> = (input) => {
           Aging immuno-diversity
         </h1>
         <p className="text-muted-foreground text-lg">
-          largest human PBMC scRNA-seq dataset
+          Pan-atlas of large-scale human single-cell PBMC datasets
         </p>
       </div>
 
