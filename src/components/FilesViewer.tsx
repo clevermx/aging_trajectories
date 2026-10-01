@@ -35,96 +35,117 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
         onValueChange={onSelectTab}
         className="w-full"
       >
-        {/* Tabs */}
+        {/* Tab headers */}
         <TabsList
           className="
-            flex flex-wrap
+            relative
+            z-10
+            flex
+            flex-wrap
+            items-end
             gap-1
+            h-auto
             mb-0
             px-3
             bg-transparent
-            h-auto
-            items-end
           "
         >
-        {Object.values(tabs).map((tab) => {
-        const isActive = activeTab === tab.name;
+          {Object.values(tabs).map((tab) => {
+            const isActive = activeTab === tab.name;
 
-        return (
-            <TabsTrigger
-            key={tab.name}
-            value={tab.name}
-            className="
-                relative
-                px-4 py-3
-                text-sm font-medium
-                transition-colors
-                rounded-t-lg
-                rounded-b-none
-                border
-            "
-            style={{
-                backgroundColor: isActive
-                ? `${tab.color}30`
-                : tab.color || "var(--muted)",
+            const panelColor = tab.color
+              ? `${tab.color}30`
+              : "#f9f9f9";
 
-                borderColor: tab.color || "#e5e7eb",
+            return (
+              <TabsTrigger
+                key={tab.name}
+                value={tab.name}
+                className="
+                  relative
+                  px-4 py-3
+                  text-sm font-medium
+                  transition-colors
 
-                // Active tab merges into panel below
-                borderBottomColor: isActive
-                ? `${tab.color}30`
-                : tab.color || "#e5e7eb",
+                  rounded-t-lg
+                  rounded-b-none
 
-                // Put active tab over panel's top border
-                zIndex: isActive ? 2 : 1,
+                  border
+                "
+                style={{
+                  backgroundColor: isActive
+                    ? panelColor
+                    : tab.color || "var(--muted)",
 
-                // Extend it slightly over the panel
-                marginBottom: isActive ? "-1px" : "0",
-            }}
-            >
-            {tab.display_name}
-            </TabsTrigger>
-        );
-        })}
+                  borderColor: tab.color || "#e5e7eb",
+
+                  // Active tab is open at the bottom.
+                  borderBottomColor: isActive
+                    ? panelColor
+                    : tab.color || "#e5e7eb",
+
+                  zIndex: isActive ? 20 : 10,
+
+                  // Cover the content panel's top border.
+                  marginBottom: isActive ? "-2px" : "0",
+                }}
+              >
+                {tab.display_name}
+              </TabsTrigger>
+            );
+          })}
         </TabsList>
 
-        {/* Content */}
-        {Object.values(tabs).map((tab) => (
+        {/* Tab content */}
+        {Object.values(tabs).map((tab) => {
+          const panelColor = tab.color
+            ? `${tab.color}30`
+            : "#f9f9f9";
+
+          return (
             <TabsContent
-            key={tab.name}
-            value={tab.name}
-            className="
+              key={tab.name}
+              value={tab.name}
+              className="
+                relative
+                z-0
                 mt-0
-                rounded-xl
+
+                rounded-t-none
+                rounded-b-xl
+
                 border
                 shadow-sm
+
                 p-5 sm:p-6
-            "
-            style={{
-                backgroundColor: tab.color
-                ? `${tab.color}30`
-                : "#f9f9f9",
+              "
+              style={{
+                backgroundColor: panelColor,
                 borderColor: tab.color || "#e5e7eb",
-            }}
+
+                // Pull panel under active tab.
+                marginTop: "-1px",
+              }}
             >
-            <DownloadGuide
-              tabName={tab.name}
-              displayName={tab.display_name}
-            />
-
-            <div className="mt-7 pt-5 border-t border-black/10">
-              <h3 className="text-xl font-semibold mb-2">
-                Files ({tab.files.length})
-              </h3>
-
-              <FilesComponent
-                data={tab}
-                filesLoaded={true}
-                key={`${dataset_name}_${tab.name}_downloads`}
+              <DownloadGuide
+                tabName={tab.name}
+                displayName={tab.display_name}
               />
-            </div>
-          </TabsContent>
-        ))}
+
+              <div className="mt-7 pt-5 border-t border-black/10">
+                <h3 className="text-xl font-semibold mb-2">
+                  Files ({tab.files.length})
+                </h3>
+
+                <FilesComponent
+                  data={tab}
+                  filesLoaded={true}
+                  key={`${dataset_name}_${tab.name}_downloads`}
+                />
+              </div>
+            </TabsContent>
+          );
+        })}
       </Tabs>
     </div>
   );
