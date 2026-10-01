@@ -58,40 +58,38 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
               : "#f9f9f9";
 
             return (
-              <TabsTrigger
+                <TabsTrigger
                 key={tab.name}
                 value={tab.name}
                 className="
-                  relative
-                  px-4 py-3
-                  text-sm font-medium
-                  transition-colors
-
-                  rounded-t-lg
-                  rounded-b-none
-
-                  border
+                    relative
+                    px-4 py-3
+                    text-sm font-medium
+                    transition-colors
+                    rounded-t-lg
+                    rounded-b-none
+                    border
                 "
                 style={{
-                  backgroundColor: isActive
+                    backgroundColor: isActive
                     ? panelColor
                     : tab.color || "var(--muted)",
 
-                  borderColor: tab.color || "#e5e7eb",
+                    borderColor: tab.color || "#e5e7eb",
 
-                  // Active tab is open at the bottom.
-                  borderBottomColor: isActive
-                    ? panelColor
+                    // Remove bottom border from selected tab
+                    borderBottomColor: isActive
+                    ? "transparent"
                     : tab.color || "#e5e7eb",
 
-                  zIndex: isActive ? 20 : 10,
+                    zIndex: isActive ? 20 : 10,
 
-                  // Cover the content panel's top border.
-                  marginBottom: isActive ? "-2px" : "0",
+                    // Move active tab over panel border
+                    marginBottom: isActive ? "-1px" : "0",
                 }}
-              >
+                >
                 {tab.display_name}
-              </TabsTrigger>
+                </TabsTrigger>
             );
           })}
         </TabsList>
