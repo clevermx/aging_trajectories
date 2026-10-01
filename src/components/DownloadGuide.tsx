@@ -1,10 +1,26 @@
 import React from "react";
-import { FileText, Database, Table2, ScatterChart } from "lucide-react";
+import { Database, Table2, ScatterChart, FileText } from "lucide-react";
 
 interface DownloadGuideProps {
   tabName: string;
   displayName: string;
+  compact?: boolean;
 }
+
+const StructureItem = ({
+  name,
+  children,
+}: {
+  name: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex gap-3 text-sm leading-relaxed">
+    <code className="shrink-0 min-w-[90px] font-semibold text-gray-900">
+      {name}
+    </code>
+    <span className="text-gray-700">{children}</span>
+  </div>
+);
 
 const AnnotationTable = () => (
   <div className="mt-6">
@@ -16,9 +32,9 @@ const AnnotationTable = () => (
       Cell annotations are available in the metadata and AnnData objects.
     </p>
 
-    <div className="overflow-x-auto rounded-lg border border-gray-200">
+    <div className="overflow-x-auto rounded-lg border border-black/10 bg-white/50">
       <table className="w-full text-sm text-left">
-        <thead className="bg-gray-50">
+        <thead className="bg-white/40">
           <tr>
             <th className="px-4 py-2 font-semibold">Column</th>
             <th className="px-4 py-2 font-semibold">Description</th>
@@ -26,7 +42,7 @@ const AnnotationTable = () => (
           </tr>
         </thead>
 
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="divide-y divide-black/10">
           <tr>
             <td className="px-4 py-2">
               <code>author_celltype</code>
@@ -80,7 +96,7 @@ const AnnotationTable = () => (
   </div>
 );
 
-const GuideRow = ({
+const GuideSection = ({
   icon,
   title,
   children,
@@ -89,13 +105,13 @@ const GuideRow = ({
   title: string;
   children: React.ReactNode;
 }) => (
-  <div className="flex gap-4">
+  <div className="flex gap-3">
     <div className="shrink-0 mt-0.5 text-gray-700">
       {icon}
     </div>
 
-    <div>
-      <div className="font-semibold">{title}</div>
+    <div className="min-w-0">
+      <div className="font-semibold mb-1">{title}</div>
       <div className="text-sm text-gray-700 leading-relaxed">
         {children}
       </div>
@@ -106,108 +122,287 @@ const GuideRow = ({
 export const DownloadGuide: React.FC<DownloadGuideProps> = ({
   tabName,
   displayName,
+  compact = false,
 }) => {
   const isDatasetTab = tabName === "all_cohorts";
 
   if (isDatasetTab) {
     return (
-      <div className="mb-6">
-        <div className="rounded-xl border border-blue-200 bg-blue-50/60 p-5">
-          <h3 className="text-xl font-semibold mb-1">
-            Reannotated datasets
-          </h3>
+      <div>
+        <h3 className="text-xl font-semibold mb-1">
+          Reannotated datasets
+        </h3>
 
-          <p className="text-sm text-gray-700 mb-5">
-            Individual datasets with harmonized cell-type annotations,
-            together with complete cell-level metadata across all datasets.
-          </p>
+        <p className="text-sm text-gray-700 mb-5">
+          Each <code>*_reannotated.h5ad</code> file contains one source
+          dataset with harmonized cell-type annotations.
+        </p>
 
-          <div className="space-y-4">
-            <GuideRow
-              icon={<FileText size={22} />}
-              title="Dataset files (*_reannotated.h5ad)"
-            >
-              Each file contains one source dataset. Normalized,
-              log-transformed expression is stored in{" "}
-              <code>.X</code>, raw UMI counts in{" "}
-              <code>.raw.X</code>, cell and donor metadata in{" "}
-              <code>.obs</code>, and original dataset UMAP coordinates
-              in <code>.obsm["X_umap"]</code> when available.
-            </GuideRow>
+        <div className="space-y-5">
+          <GuideSection
+            icon={<Database size={21} />}
+            title="Dataset AnnData files"
+          >
+            <div className="space-y-1.5 mt-2">
+              <StructureItem name=".X">
+                Normalized, log-transformed expression
+              </StructureItem>
 
-            <GuideRow
-              icon={<Table2 size={22} />}
-              title="All-cells metadata (all_cells_metadata.csv.gz)"
-            >
-              Complete cell-level metadata across all datasets. Cell IDs
-              correspond to <code>.obs_names</code> in the dataset
-              AnnData files.
-            </GuideRow>
-          </div>
+              <StructureItem name=".raw.X">
+                Raw UMI counts
+              </StructureItem>
+
+              <StructureItem name=".obs">
+                Cell and donor metadata, including original and harmonized
+                cell-type annotations
+              </StructureItem>
+
+              <StructureItem name='.obsm["X_umap"]'>
+                Original dataset UMAP coordinates, when available
+              </StructureItem>
+
+              <StructureItem name=".obs_names">
+                Cell IDs corresponding to the <code>barcode</code> column
+                in the all-cells metadata
+              </StructureItem>
+            </div>
+          </GuideSection>
+
+          <GuideSection
+            icon={<FileText size={21} />}
+            title="All-cells metadata"
+          >
+            <code>all_cells_metadata.csv.gz</code> contains complete
+            cell-level metadata across all datasets.
+          </GuideSection>
         </div>
 
-        <AnnotationTable />
+        {!compact && <AnnotationTable />}
       </div>
     );
   }
 
   return (
-    <div className="mb-6">
-      <div className="rounded-xl border border-gray-200 bg-white/60 p-5">
-        <h3 className="text-xl font-semibold mb-1">
-          Integrated cell-type data
-        </h3>
+    <div>
+      <h3 className="text-xl font-semibold mb-1">
+        Integrated cell-type data
+      </h3>
 
-        <p className="text-sm text-gray-700 mb-5">
-          {displayName} are provided in several formats for different
-          downstream applications.
-        </p>
+      <p className="text-sm text-gray-700 mb-5">
+        {displayName} are provided in several formats for visualization
+        and downstream analysis.
+      </p>
 
-        <div className="space-y-4">
-          <GuideRow
-            icon={<Database size={22} />}
-            title="Normalized expression (.h5ad)"
-          >
-            Normalized, log-transformed expression for the{" "}
-            <strong>common gene set shared across datasets</strong>.
-            Use for visualization and expression-based analyses.
-          </GuideRow>
+      <div className="space-y-5">
+        <GuideSection
+          icon={<Database size={21} />}
+          title="Normalized expression (.h5ad)"
+        >
+          <div className="space-y-1.5 mt-2">
+            <StructureItem name=".X">
+              Normalized, log-transformed expression for the common gene
+              set shared across datasets
+            </StructureItem>
 
-          <GuideRow
-            icon={<Database size={22} />}
-            title="Raw counts (.h5ad)"
-          >
-            Raw UMI counts for the{" "}
-            <strong>full set of available genes</strong>. Use for
-            pseudobulk differential expression and other count-based
-            analyses.
-          </GuideRow>
+            <StructureItem name=".obs">
+              Cell and donor metadata
+            </StructureItem>
 
-          <GuideRow
-            icon={<Table2 size={22} />}
-            title="Metadata (.csv)"
-          >
-            Cell and donor metadata, including original and harmonized
-            cell-type annotations.
-          </GuideRow>
+            <StructureItem name=".obsm">
+              PCA, Harmony and integrated UMAP coordinates, where applicable
+            </StructureItem>
 
-          <GuideRow
-            icon={<ScatterChart size={22} />}
-            title="UMAP coordinates (.tsv)"
-          >
-            Final integrated UMAP coordinates.
-          </GuideRow>
-        </div>
+            <StructureItem name=".raw">
+              Not included
+            </StructureItem>
+          </div>
+        </GuideSection>
 
-        <div className="mt-5 rounded-lg bg-orange-50 border border-orange-200 px-4 py-3 text-sm">
-          <strong>
-            Normalized and raw-count files contain the same cells but
-            different gene sets.
-          </strong>{" "}
-        </div>
+        <GuideSection
+          icon={<Database size={21} />}
+          title="Raw counts (.h5ad)"
+        >
+          <div className="space-y-1.5 mt-2">
+            <StructureItem name=".X">
+              Raw UMI counts for the full set of available genes
+            </StructureItem>
+
+            <StructureItem name=".obs">
+              Cell and donor metadata
+            </StructureItem>
+
+            <StructureItem name=".obsm">
+              Integrated UMAP coordinates
+            </StructureItem>
+
+            <StructureItem name=".raw">
+              Not included
+            </StructureItem>
+          </div>
+        </GuideSection>
+
+        <GuideSection
+          icon={<Table2 size={21} />}
+          title="Metadata (.csv)"
+        >
+          Cell and donor metadata, including original and harmonized
+          cell-type annotations.
+        </GuideSection>
+
+        <GuideSection
+          icon={<ScatterChart size={21} />}
+          title="UMAP coordinates (.tsv)"
+        >
+          Final integrated UMAP coordinates in a simple tab-separated format.
+        </GuideSection>
       </div>
 
-      <AnnotationTable />
+      <div className="mt-5 rounded-lg bg-white/50 border border-black/10 px-4 py-3 text-sm">
+        <strong>
+          Normalized and raw-count files contain the same cells but different
+          gene sets.
+        </strong>{" "}
+        Cell order may differ between files. Match cells by cell ID rather
+        than row position.
+      </div>
+
+      {!compact && <AnnotationTable />}
     </div>
   );
 };
+
+export const SimplifiedDownloadGuide = () => (
+  <div className="mb-10">
+    <h2 className="text-xl font-semibold mb-2">
+      About these files
+    </h2>
+
+    <p className="text-sm text-gray-700 mb-6">
+      Downloads include integrated cell-type subsets, individually
+      reannotated source datasets, and cell-level metadata.
+    </p>
+
+    {/* Integrated subsets */}
+    <div className="mb-7">
+      <h3 className="text-lg font-semibold mb-2">
+        Integrated cell-type data
+      </h3>
+
+      <div className="space-y-5">
+        <GuideSection
+          icon={<Database size={21} />}
+          title="Normalized expression (.h5ad)"
+        >
+          <div className="space-y-1.5 mt-2">
+            <StructureItem name=".X">
+              Normalized, log-transformed expression for the common gene
+              set shared across datasets
+            </StructureItem>
+
+            <StructureItem name=".obs">
+              Cell and donor metadata
+            </StructureItem>
+
+            <StructureItem name=".obsm">
+              PCA, Harmony and integrated UMAP coordinates, where applicable
+            </StructureItem>
+
+            <StructureItem name=".raw">
+              Not included
+            </StructureItem>
+          </div>
+        </GuideSection>
+
+        <GuideSection
+          icon={<Database size={21} />}
+          title="Raw counts (.h5ad)"
+        >
+          <div className="space-y-1.5 mt-2">
+            <StructureItem name=".X">
+              Raw UMI counts for the full set of available genes
+            </StructureItem>
+
+            <StructureItem name=".obs">
+              Cell and donor metadata
+            </StructureItem>
+
+            <StructureItem name=".obsm">
+              Integrated UMAP coordinates
+            </StructureItem>
+
+            <StructureItem name=".raw">
+              Not included
+            </StructureItem>
+          </div>
+        </GuideSection>
+
+        <GuideSection
+          icon={<Table2 size={21} />}
+          title="Metadata (.csv)"
+        >
+          Cell and donor metadata, including original and harmonized
+          cell-type annotations.
+        </GuideSection>
+
+        <GuideSection
+          icon={<ScatterChart size={21} />}
+          title="UMAP coordinates (.tsv)"
+        >
+          Final integrated UMAP coordinates in a simple tab-separated format.
+        </GuideSection>
+      </div>
+
+      <div className="mt-5 rounded-lg bg-orange-50 border border-orange-200 px-4 py-3 text-sm">
+        <strong>
+          Normalized and raw-count files contain the same cells but
+          different gene sets.
+        </strong>{" "}
+        Cell order may differ between files. Match cells by cell ID rather
+        than row position.
+      </div>
+    </div>
+
+    {/* Reannotated datasets */}
+    <div className="border-t border-gray-200 pt-6">
+      <h3 className="text-lg font-semibold mb-2">
+        Reannotated datasets
+      </h3>
+
+      <p className="text-sm text-gray-700 mb-4">
+        Each <code>*_reannotated.h5ad</code> file contains one source
+        dataset with harmonized cell-type annotations.
+      </p>
+
+      <div className="space-y-1.5">
+        <StructureItem name=".X">
+          Normalized, log-transformed expression
+        </StructureItem>
+
+        <StructureItem name=".raw.X">
+          Raw UMI counts
+        </StructureItem>
+
+        <StructureItem name=".obs">
+          Cell and donor metadata, including original and harmonized
+          cell-type annotations
+        </StructureItem>
+
+        <StructureItem name='.obsm["X_umap"]'>
+          Original dataset UMAP coordinates, when available
+        </StructureItem>
+
+        <StructureItem name=".obs_names">
+          Cell IDs corresponding to the <code>barcode</code> column in
+          the all-cells metadata
+        </StructureItem>
+      </div>
+
+      <p className="text-sm text-gray-700 mt-4">
+        <code>all_cells_metadata.csv.gz</code> contains complete
+        cell-level metadata across all datasets.
+      </p>
+    </div>
+
+    <AnnotationTable />
+  </div>
+);
