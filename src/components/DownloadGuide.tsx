@@ -14,14 +14,25 @@ const StructureItem = ({
   name: string;
   children: React.ReactNode;
 }) => (
-  <div className="flex gap-3 text-sm leading-relaxed">
-    <code className="shrink-0 min-w-[90px] font-semibold text-gray-900">
+  <div
+    className="
+      grid
+      grid-cols-1
+      sm:grid-cols-[140px_1fr]
+      gap-1 sm:gap-3
+      text-sm
+      leading-relaxed
+    "
+  >
+    <code className="font-semibold text-gray-900 whitespace-nowrap">
       {name}
     </code>
-    <span className="text-gray-700">{children}</span>
+
+    <div className="text-gray-700 min-w-0">
+      {children}
+    </div>
   </div>
 );
-
 const AnnotationTable = () => (
   <div className="mt-6">
     <h3 className="text-lg font-semibold mb-1">
@@ -262,8 +273,6 @@ export const DownloadGuide: React.FC<DownloadGuideProps> = ({
           Normalized and raw-count files contain the same cells but different
           gene sets.
         </strong>{" "}
-        Cell order may differ between files. Match cells by cell ID rather
-        than row position.
       </div>
 
       {!compact && <AnnotationTable />}
@@ -305,10 +314,6 @@ export const SimplifiedDownloadGuide = () => (
 
             <StructureItem name=".obsm">
               PCA, Harmony and integrated UMAP coordinates, where applicable
-            </StructureItem>
-
-            <StructureItem name=".raw">
-              Not included
             </StructureItem>
           </div>
         </GuideSection>

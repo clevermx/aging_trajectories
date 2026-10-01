@@ -29,21 +29,32 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
   const activeTab = selectedTab || firstTab;
 
   return (
-    <div key={"downloads_container_" + dataset_name}>
+    <div key={`downloads_container_${dataset_name}`}>
       <Tabs
         value={activeTab}
         onValueChange={(val) => onSelectTab(val)}
         className="w-full"
       >
         {/* Tab headers */}
-        <TabsList className="flex flex-wrap gap-1 mb-4 border-gray-200 bg-transparent">
+        <TabsList
+          className="
+            flex flex-wrap gap-1
+            mb-0
+            border-gray-200
+            bg-transparent
+          "
+        >
           {Object.values(tabs).map((tab) => (
             <TabsTrigger
               key={tab.name}
               value={tab.name}
               className="
-                px-4 py-3 text-sm font-medium transition-colors
-                rounded-lg
+                px-4 py-3
+                text-sm font-medium
+                transition-colors
+                rounded-t-lg
+
+                data-[state=active]:rounded-b-none
                 data-[state=active]:text-white
               "
               style={{
@@ -56,43 +67,46 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
           ))}
         </TabsList>
 
-        {/* Tab content */}
+        {/* Tab contents */}
         {Object.values(tabs).map((tab) => (
-            <TabsContent
-                key={tab.name}
-                value={tab.name}
-                className="
-                mt-0
-                rounded-b-xl rounded-tr-xl
-                border
-                shadow-sm
-                p-5 sm:p-6
-                "
-                style={{
-                backgroundColor: tab.color
-                    ? `${tab.color}30`
-                    : "#f9f9f9",
-                borderColor: tab.color || "#e5e7eb",
-                }}
-            >
-                <DownloadGuide
-                tabName={tab.name}
-                displayName={tab.display_name}
-                />
+          <TabsContent
+            key={tab.name}
+            value={tab.name}
+            className="
+              mt-0
+              rounded-b-xl
+              rounded-tr-xl
+              border
+              shadow-sm
+              p-5 sm:p-6
+            "
+            style={{
+              backgroundColor: tab.color
+                ? `${tab.color}30`
+                : "#f9f9f9",
+              borderColor: tab.color || "#e5e7eb",
+            }}
+          >
+            {/* Description of files in this tab */}
+            <DownloadGuide
+              tabName={tab.name}
+              displayName={tab.display_name}
+            />
 
-                <div className="mt-7 pt-5 border-t border-black/10">
-                <h3 className="text-xl font-semibold mb-2">
-                    Files ({tab.files.length})
-                </h3>
+            {/* Actual downloadable files */}
+            <div className="mt-7 pt-5 border-t border-black/10">
+              <h3 className="text-xl font-semibold mb-2">
+                Files ({tab.files.length})
+              </h3>
 
-                <FilesComponent
-                    data={tab}
-                    filesLoaded={true}
-                    key={`${dataset_name}_${tab.name}_downloads`}
-                />
-                </div>
-            </TabsContent>
-            ))}
+              <FilesComponent
+                data={tab}
+                filesLoaded={true}
+                key={`${dataset_name}_${tab.name}_downloads`}
+              />
+            </div>
+          </TabsContent>
+        ))}
       </Tabs>
     </div>
   );

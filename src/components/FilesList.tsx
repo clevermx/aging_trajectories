@@ -16,20 +16,14 @@ export const FilesList: React.FC<FilesListProps> = ({
 }) => {
   return (
     <div className="w-full">
-      {/* Description is shown only once */}
+      {/* Description shown once at the top */}
       <SimplifiedDownloadGuide />
 
       {/* Download sections */}
       {Object.values(tabs).map((tab) => (
         <div
           key={tab.name}
-          className="mb-6 rounded-xl border p-5 sm:p-6"
-          style={{
-            backgroundColor: tab.color
-              ? `${tab.color}30`
-              : "#f9f9f9",
-            borderColor: tab.color || "#e5e7eb",
-          }}
+          className="mb-6 border-b border-gray-200 p-5 sm:p-6"
         >
           <div className="flex items-baseline justify-between gap-4 mb-3">
             <h2 className="text-xl font-semibold">
@@ -37,7 +31,8 @@ export const FilesList: React.FC<FilesListProps> = ({
             </h2>
 
             <span className="text-sm text-gray-500">
-              {tab.files.length} {tab.files.length === 1 ? "file" : "files"}
+              {tab.files.length}{" "}
+              {tab.files.length === 1 ? "file" : "files"}
             </span>
           </div>
 
