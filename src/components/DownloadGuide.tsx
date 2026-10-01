@@ -222,10 +222,6 @@ export const DownloadGuide: React.FC<DownloadGuideProps> = ({
             <StructureItem name=".obsm">
               PCA, Harmony and integrated UMAP coordinates, where applicable
             </StructureItem>
-
-            <StructureItem name=".raw">
-              Not included
-            </StructureItem>
           </div>
         </GuideSection>
 
@@ -246,9 +242,6 @@ export const DownloadGuide: React.FC<DownloadGuideProps> = ({
               Integrated UMAP coordinates
             </StructureItem>
 
-            <StructureItem name=".raw">
-              Not included
-            </StructureItem>
           </div>
         </GuideSection>
 
@@ -335,9 +328,6 @@ export const SimplifiedDownloadGuide = () => (
               Integrated UMAP coordinates
             </StructureItem>
 
-            <StructureItem name=".raw">
-              Not included
-            </StructureItem>
           </div>
         </GuideSection>
 

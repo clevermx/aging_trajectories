@@ -32,16 +32,19 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
     <div key={`downloads_container_${dataset_name}`}>
       <Tabs
         value={activeTab}
-        onValueChange={(val) => onSelectTab(val)}
+        onValueChange={onSelectTab}
         className="w-full"
       >
-        {/* Tab headers */}
+        {/* Tabs */}
         <TabsList
           className="
-            flex flex-wrap gap-1
+            flex flex-wrap
+            gap-1
             mb-0
-            border-gray-200
+            px-3
             bg-transparent
+            h-auto
+            items-end
           "
         >
           {Object.values(tabs).map((tab) => (
@@ -52,14 +55,18 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
                 px-4 py-3
                 text-sm font-medium
                 transition-colors
-                rounded-t-lg
 
-                data-[state=active]:rounded-b-none
+                rounded-t-lg
+                rounded-b-none
+
+                border
+                border-b-0
+
                 data-[state=active]:text-white
               "
               style={{
                 backgroundColor: tab.color || "var(--muted)",
-                opacity: 0.9,
+                borderColor: tab.color || "#e5e7eb",
               }}
             >
               {tab.display_name}
@@ -67,15 +74,14 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
           ))}
         </TabsList>
 
-        {/* Tab contents */}
+        {/* Content */}
         {Object.values(tabs).map((tab) => (
           <TabsContent
             key={tab.name}
             value={tab.name}
             className="
               mt-0
-              rounded-b-xl
-              rounded-tr-xl
+              rounded-xl
               border
               shadow-sm
               p-5 sm:p-6
@@ -87,13 +93,11 @@ export const FilesViewer: React.FC<FilesViewerProps> = ({
               borderColor: tab.color || "#e5e7eb",
             }}
           >
-            {/* Description of files in this tab */}
             <DownloadGuide
               tabName={tab.name}
               displayName={tab.display_name}
             />
 
-            {/* Actual downloadable files */}
             <div className="mt-7 pt-5 border-t border-black/10">
               <h3 className="text-xl font-semibold mb-2">
                 Files ({tab.files.length})
